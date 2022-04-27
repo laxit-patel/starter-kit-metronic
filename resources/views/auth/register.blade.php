@@ -29,7 +29,7 @@
                 <!--begin::Col-->
                 <div class="col-xl-12">
                     <label class="form-label required fw-bolder text-dark fs-6">Full Name</label>
-                    <input class="form-control form-control-lg form-control-solid {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" placeholder="" name="name" autocomplete="off" />
+                    <input class="form-control form-control-lg form-control-solid {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" placeholder="Enter name" name="name" value="{{ old('name') }}" autocomplete="off" />
                 </div>
                 <!--end::Col-->
             </div>
@@ -37,7 +37,7 @@
             <!--begin::Input group-->
             <div class="fv-row mb-7">
                 <label class="form-label fw-bolder text-dark fs-6 required">Email</label>
-                <input class="form-control form-control-lg form-control-solid {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" placeholder="" name="email" autocomplete="off" />
+                <input class="form-control form-control-lg form-control-solid {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" placeholder="Enter Email" name="email" value="{{ old('email') }}" autocomplete="off" />
             </div>
             <!--end::Input group-->
             <!--begin::Input group-->
