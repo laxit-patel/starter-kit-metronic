@@ -53,7 +53,7 @@
                 <h1 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">{{ $title }}</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
-                <ol class="breadcrumb text-muted fs-6 fw-bold">
+                <ol class="breadcrumb text-muted fs-6 mt-2 fw-bold">
                     @yield('breadcrumb')
                 </ol>
                 <!--end::Breadcrumb-->

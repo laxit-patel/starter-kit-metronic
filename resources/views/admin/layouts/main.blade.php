@@ -14,6 +14,9 @@
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
         <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Pagewise Stylesheet -->
+        @stack('stylesheet')
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -33,13 +36,7 @@
 					<!--end::Header-->
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-						<!--begin::Post-->
-						<div class="post d-flex flex-column-fluid" id="kt_post">
-							<!--begin::Container-->
-							@yield('content')
-							<!--end::Container-->
-						</div>
-						<!--end::Post-->
+						@yield('content')
 					</div>
 					<!--end::Content-->
 					<!--begin::Footer-->

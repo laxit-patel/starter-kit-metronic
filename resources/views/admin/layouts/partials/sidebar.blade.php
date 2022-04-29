@@ -7,7 +7,7 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
 
                 <div class="menu-item">
-                    <a class="menu-link active" href="{{ route('admin.admin') }}">
+                    <a class="menu-link {{ Route::is('admin.admin') ? 'active' : '' }}" href="{{ route('admin.admin') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -25,8 +25,8 @@
                 </div>
             
             
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                    <span class="menu-link">
+                <div data-kt-menu-trigger="click" class="menu-item {{ Route::is('admin.user*') || Route::is('admin.permission*') || Route::is('admin.role*') ? 'show' : '' }} menu-accordion mb-1">
+                    <span class="menu-link {{ Route::is('admin.user*') || Route::is('admin.permission*') || Route::is('admin.role*') ? 'active' : '' }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -41,68 +41,36 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
-                            <span class="menu-link">
+                        @can('user-view')
+                        <div class="menu-item {{ Route::is('admin.user*') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.user') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Users</span>
-                                <span class="menu-arrow"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo8/dist/apps/user-management/users/list.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Users List</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo8/dist/apps/user-management/users/view.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">View User</span>
-                                    </a>
-                                </div>
-                            </div>
+                                <span class="menu-title">User</span>
+                            </a>
                         </div>
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                            <span class="menu-link">
+                        @endcan
+                        @can('role-view')
+                        <div class="menu-item {{ Route::is('admin.role*') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.role') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Roles</span>
-                                <span class="menu-arrow"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo8/dist/apps/user-management/roles/list.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Roles List</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo8/dist/apps/user-management/roles/view.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">View Role</span>
-                                    </a>
-                                </div>
-                            </div>
+                                <span class="menu-title">Role</span>
+                            </a>
                         </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="../../demo8/dist/apps/user-management/permissions.html">
+                        @endcan
+                        @can('permission-view')
+                        <div class="menu-item {{ Route::is('admin.permission*') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.permission') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Permissions</span>
                             </a>
                         </div>
+                        @endcan
                     </div>
                 </div>
 
