@@ -39,5 +39,10 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'role-delete']);
         $this->command->comment("Role");
 
+        // Permissions::Customer
+        Permission::create(['name' => 'customer-view']);
+        Permission::create(['name' => 'customer-profile']);
+        $this->command->comment("Customer");
+
     }
 }

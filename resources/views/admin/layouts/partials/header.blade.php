@@ -1,4 +1,4 @@
-<div id="kt_header" style="" class="header align-items-stretch">
+<div id="kt_header" style="" class="header shadow-lg align-items-stretch">
     <!--begin::Brand-->
     <div class="header-brand">
         <!--begin::Logo-->

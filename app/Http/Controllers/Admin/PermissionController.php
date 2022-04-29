@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 use Spatie\Permission\Models\Permission;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -33,9 +32,4 @@ class PermissionController extends Controller
         return redirect()->route('admin.permission')->with('success','Permission Added');
     }
 
-    public function delete($id)
-    {
-        Permission::findById($id)->delete();
-        return redirect()->route('admin.permission')->with('deleted','Permission Deleted');
-    }
 }

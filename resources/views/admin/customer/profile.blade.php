@@ -31,14 +31,6 @@
                             <!--begin::Name-->
                             <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">{{ $user->name }}</a>
                             <!--end::Name-->
-                            <!--begin::Position-->
-                            <div class="mb-9">
-                                <!--begin::Badge-->
-                                <div class="badge badge-lg badge-light-primary d-inline">{{ $user->roles[0]->name }}</div>
-                                <!--begin::Badge-->
-                            </div>
-                            <!--end::Position-->
-                
                         </div>
                         <!--end::User Info-->
                         <!--end::Summary-->

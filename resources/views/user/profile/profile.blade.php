@@ -1,8 +1,7 @@
-@extends('admin.layouts.main',['title' => 'User Management'])
+@extends('user.layouts.main',['title' => 'Profile'])
 
 @section('breadcrumb')
-<li class="breadcrumb-item pe-3"><a href="{{ route('admin.admin') }}" class="pe-3"><i class="fa fa-home text-hover-primary"></i></a></li>
-<li class="breadcrumb-item px-3"><a class="text-hover-primary text-muted" href="{{ route('admin.user') }}">User</a></li>
+<li class="breadcrumb-item pe-3"><a href="{{ route('user.user') }}" class="pe-3"><i class="fa fa-home text-hover-primary"></i></a></li>
 <li class="breadcrumb-item px-3 text-primary">Profile</li>
 @endsection
 
@@ -29,16 +28,8 @@
                             </div>
                             <!--end::Avatar-->
                             <!--begin::Name-->
-                            <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">{{ $user->name }}</a>
+                            <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">{{ auth()->user()->name }}</a>
                             <!--end::Name-->
-                            <!--begin::Position-->
-                            <div class="mb-9">
-                                <!--begin::Badge-->
-                                <div class="badge badge-lg badge-light-primary d-inline">{{ $user->roles[0]->name }}</div>
-                                <!--begin::Badge-->
-                            </div>
-                            <!--end::Position-->
-                
                         </div>
                         <!--end::User Info-->
                         <!--end::Summary-->
@@ -66,7 +57,7 @@
                                 <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Email</div>
                                 <div class="text-gray-600">
-                                    <a href="#" class="text-gray-600 text-hover-primary">{{ $user->email }}</a>
+                                    <a href="#" class="text-gray-600 text-hover-primary">{{ auth()->user()->email }}</a>
                                 </div>
                                 <!--begin::Details item-->
                             </div>
@@ -90,31 +81,6 @@
                     <!--begin:::Tab item-->
                     <li class="nav-item">
                         <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab" href="#kt_user_view_overview_security" style="">Security</a>
-                    </li>
-                    <!--end:::Tab item-->
-                    <!--begin:::Tab item-->
-                    <li class="nav-item ms-auto">
-                        <!--begin::Action menu-->
-                        <a href="#" class="btn btn-primary ps-7" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">Actions 
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                        <span class="svg-icon svg-icon-2 me-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor"></path>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon--></a>
-                        <!--begin::Menu-->
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold py-4 w-250px fs-6" data-kt-menu="true">
-                            <!--begin::Menu item-->
-                            @can('user-delete')
-                            <div class="menu-item px-5">
-                                <a href="{{ route('admin.user.delete',['id' => $user->id]) }}" class="menu-link text-danger px-5">Delete User</a>
-                            </div>
-                            @endcan
-                            <!--end::Menu item-->
-                        </div>
-                        <!--end::Menu-->
-                        <!--end::Menu-->
                     </li>
                     <!--end:::Tab item-->
                 </ul>
@@ -144,9 +110,25 @@
                                     <tbody class="fs-6 fw-bold text-gray-600">
                                         <tr>
                                             <td>Email</td>
-                                            <td>{{ $user->email }}</td>
+                                            <td>{{ auth()->user()->email }}</td>
                                             <td class="text-end">
                                                 <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto" data-bs-toggle="modal" data-bs-target="#kt_modal_update_email">
+                                                    <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                    <span class="svg-icon svg-icon-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                            <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="currentColor"></path>
+                                                            <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="currentColor"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Password</td>
+                                            <td>******</td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto" data-bs-toggle="modal" data-bs-target="#kt_modal_update_password">
                                                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -275,9 +257,9 @@
                     <!--begin::Modal body-->
                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                         <!--begin::Form-->
-                        <form id="kt_modal_update_email_form" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="{{ route('admin.user.update.email') }}">
+                        <form id="kt_modal_update_email_form" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="{{ route('user.profile.update.email') }}">
                             @csrf
-                            <input type="hidden" name="user" value="{{ $user->id }}">
+                            <input type="hidden" name="user" value="{{ auth()->user()->id }}">
                             <!--begin::Notice-->
                             <!--begin::Notice-->
                             <div class="notice d-flex bg-light-primary rounded border-primary border border-dashed mb-9 p-6">
@@ -312,7 +294,7 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input class="form-control form-control-solid" placeholder="" name="email" value="{{ $user->email }}">
+                                <input class="form-control form-control-solid" placeholder="" name="email" value="{{ auth()->user()->email }}">
                                 <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             <!--end::Input group-->

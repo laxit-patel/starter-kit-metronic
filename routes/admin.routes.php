@@ -29,4 +29,8 @@ Route::name('permission.check')->get('/permission/check', 'App\Http\Controllers\
 Route::name('permission.store')->post('/permission/store', 'App\Http\Controllers\Admin\PermissionController@store');
 Route::name('permission.delete')->get('/permission/store/delete/{id}', 'App\Http\Controllers\Admin\PermissionController@delete');
 
+//Customer Management
+Route::name('customer')->get('/customer', 'App\Http\Controllers\Admin\CustomerController@index')->middleware(['permission:customer-view']);
+Route::name('customer.profile')->get('/customer/profile/{id}', 'App\Http\Controllers\Admin\CustomerController@profile')->middleware(['permission:customer-profile']);
+
 ?>
