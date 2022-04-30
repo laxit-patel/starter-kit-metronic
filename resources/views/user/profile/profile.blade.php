@@ -10,6 +10,7 @@
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
+        @include('layouts.alerts.error')
         @include('layouts.alerts.alert')
         <!--begin::Layout-->
         <div class="d-flex flex-column flex-lg-row">
@@ -55,9 +56,21 @@
                         <div id="kt_user_view_details" class="collapse show">
                             <div class="pb-5 fs-6">
                                 <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Name</div>
+                                <div class="text-gray-600">
+                                    <a href="#" class="text-gray-600 text-hover-primary">{{ auth()->user()->name }}</a>
+                                </div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
                                 <div class="fw-bolder mt-5">Email</div>
                                 <div class="text-gray-600">
                                     <a href="#" class="text-gray-600 text-hover-primary">{{ auth()->user()->email }}</a>
+                                </div>
+                                <!--begin::Details item-->
+                                <!--begin::Details item-->
+                                <div class="fw-bolder mt-5">Joined</div>
+                                <div class="text-gray-600">
+                                    <a href="#" class="text-gray-600 text-hover-primary">{{ auth()->user()->created_at->diffForHumans() }}</a>
                                 </div>
                                 <!--begin::Details item-->
                             </div>
@@ -346,7 +359,8 @@
                     <!--begin::Modal body-->
                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                         <!--begin::Form-->
-                        <form id="kt_modal_update_password_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#" _lpchecked="1">
+                        <form method="POST" id="kt_modal_update_password_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="{{ route('user.profile.update.password') }}" _lpchecked="1">
+                            @csrf
                             <!--begin::Input group=-->
                             <div class="fv-row mb-10 fv-plugins-icon-container">
                                 <label class="required form-label fs-6 mb-2">Current Password</label>

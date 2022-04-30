@@ -6,4 +6,5 @@ Route::name('user')->get('/', 'App\Http\Controllers\User\DashboardController@ind
 
 Route::name('profile')->get('/profile', 'App\Http\Controllers\User\ProfileController@profile');
 Route::name('profile.update.email')->post('/profile/update/email', 'App\Http\Controllers\User\ProfileController@updateEmail');
+Route::name('profile.update.password')->post('/profile/update/password', 'App\Http\Controllers\User\ProfileController@updatePassword');
 ?>

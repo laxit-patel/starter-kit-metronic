@@ -9,6 +9,7 @@
     <!--end::Logo-->
     <!--begin::Wrapper-->
     <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+        @include('layouts.alerts.alert')
         <!--begin::Form-->
         <form method="POST" action="{{ route('login') }}" class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="../../demo1/dist/index.html" action="#">
             @csrf
