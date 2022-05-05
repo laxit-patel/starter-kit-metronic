@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountryStateCityController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -31,6 +32,9 @@ Route::middleware(['auth'])->group(function () {
         include 'user.routes.php'; // separated user routes
     });
 });
+
+Route::get('state/fetch', [CountryStateCityController::class, 'fetchState'])->name('state.fetch');
+Route::get('city/fetch', [CountryStateCityController::class, 'fetchCity'])->name('city.fetch');
 
 Route::get('/permission/create', function () {
     $permission = request()->query('name');

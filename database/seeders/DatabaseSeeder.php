@@ -15,10 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->command->info("GEnerating 100 Users");
-        \App\Models\User::factory(100)->create();
+        // \App\Models\User::factory(100)->create();
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(StateSeeder::class);
+        $this->call(CitySeeder::class);
         $this->command->question("Seeding Completed :) ");
     }
 }

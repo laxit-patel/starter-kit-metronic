@@ -16,3 +16,12 @@ This starter kit facilitates time saving by providing most used functionalities 
 
 ## Configurations
 - .Htaccess to redirect to /public
+
+## Packages
+  - Role & Permission
+    - robust package to manage role & permission
+    - https://github.com/spatie/laravel-permission
+
+  - HasUUID
+    - Generates UUID as primary key automatically using simple trait
+    - https://github.com/binarycabin/laravel-uuid

@@ -1,4 +1,4 @@
-@extends('admin.layouts.main',['title' => 'Customer'])
+@extends('admin.layouts.main',['title' => 'Student'])
 
 @push('stylesheet')
 <link href="{{ asset('plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item pe-3"><a href="{{ route('admin.admin') }}" class="pe-3"><i class="fa fa-home text-hover-primary"></i></a></li>
-<li class="breadcrumb-item px-3 text-primary">Customer</li>
+<li class="breadcrumb-item px-3 text-primary">Student</li>
 @endsection
 
 @section('content')
@@ -18,6 +18,7 @@
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
             @include('layouts.alerts.error')
+            @include('layouts.alerts.alert')
 
             <!--begin::Card-->
             <div class="card card-stretch shadow-lg card-scroll">
@@ -29,11 +30,25 @@
                         <div class="d-flex align-items-center position-relative my-1">
                             <i class="fa fa-search position-absolute ms-6"></i>
                             <input type="text" id="search" data-kt-docs-table-filter="search"
-                                class="form-control form-control-solid w-250px ps-14" placeholder="Search Regions" />
+                                class="form-control form-control-solid w-250px ps-14" placeholder="Search Students" />
                         </div>
                         <!--end::Search-->
                     </div>
                     <!--begin::Card title-->
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Toolbar-->
+                        <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                            <!--begin::Add user-->
+                            @can('student-create')
+                            <a href="{{ route('admin.student.create') }}" class="btn btn-hover-scale btn-success">
+                            <i class="fa fa-plus"></i> Add Student</a>
+                            @endcan
+                            <!--end::Add user-->
+                        </div>
+                        <!--end::Toolbar-->
+                    </div>
+                    <!--end::Card toolbar-->
                 </div>
                 <!--end::Card header-->
                 <!--begin::Card body-->
@@ -82,7 +97,7 @@
         "scrollX": true,
         "sScrollXInner": "100%",
         ajax: {
-            url: "{{ route('admin.customer') }}",
+            url: "{{ route('admin.student') }}",
             error: function (request, err) {
                 Toast.fire({
                     icon: 'error',
@@ -109,7 +124,7 @@
                 render: function (data, type, row) {
                     return `
 
-                            <a href="customer/profile/${data.id}" class="btn btn-sm btn-icon btn-hover-scale btn-active-success me-2"
+                            <a href="student/profile/${data.id}" class="btn btn-sm btn-icon btn-hover-scale btn-active-success me-2"
                             ><span class="svg-icon svg-icon-1"><i class="fa fa-eye"></i></span></a>
 
                             `;

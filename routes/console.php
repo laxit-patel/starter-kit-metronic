@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('init',function(){
+
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+
+    $this->comment('Database Migrated & Seeding Completed 🥳');
+})->purpose('Database Migration & Seeding');

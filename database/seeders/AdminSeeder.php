@@ -56,5 +56,6 @@ class AdminSeeder extends Seeder
         $admin = User::where('id',$id)->first();
         $admin->assignRole('admin');
         $this->command->comment("Admin Role Assigned");
+
     }
 }

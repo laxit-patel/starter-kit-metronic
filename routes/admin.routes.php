@@ -29,8 +29,14 @@ Route::name('permission.check')->get('/permission/check', 'App\Http\Controllers\
 Route::name('permission.store')->post('/permission/store', 'App\Http\Controllers\Admin\PermissionController@store');
 Route::name('permission.delete')->get('/permission/store/delete/{id}', 'App\Http\Controllers\Admin\PermissionController@delete');
 
-//Customer Management
-Route::name('customer')->get('/customer', 'App\Http\Controllers\Admin\CustomerController@index')->middleware(['permission:customer-view']);
-Route::name('customer.profile')->get('/customer/profile/{id}', 'App\Http\Controllers\Admin\CustomerController@profile')->middleware(['permission:customer-profile']);
+//Student Manager
+Route::name('student')->get('/student', 'App\Http\Controllers\Admin\StudentController@index')->middleware(['permission:student-view']);
+Route::name('student.create')->get('/student/create', 'App\Http\Controllers\Admin\StudentController@create')->middleware(['permission:student-create']);
+Route::name('student.store')->post('/student/store', 'App\Http\Controllers\Admin\StudentController@store')->middleware(['permission:student-create']);
+Route::name('student.profile')->get('/student/profile/{id}', 'App\Http\Controllers\Admin\StudentController@profile')->middleware(['permission:student-profile']);
+Route::name('student.update')->post('/student/update', 'App\Http\Controllers\Admin\StudentController@update')->middleware(['permission:student-update']);
+Route::name('student.update.email')->post('/student/update/email', 'App\Http\Controllers\Admin\StudentController@updateEmail')->middleware(['permission:student-update-email']);
+Route::name('student.update.name')->post('/student/update/name', 'App\Http\Controllers\Admin\StudentController@updateName')->middleware(['permission:student-update-name']);
+Route::name('student.delete')->get('/student/delete/{id}', 'App\Http\Controllers\Admin\StudentController@delete')->middleware(['permission:student-delete']);
 
 ?>

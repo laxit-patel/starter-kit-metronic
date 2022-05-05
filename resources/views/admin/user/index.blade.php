@@ -30,7 +30,7 @@
                         <div class="d-flex align-items-center position-relative my-1">
                             <i class="fa fa-search position-absolute ms-6"></i>
                             <input type="text" id="search" data-kt-docs-table-filter="search"
-                                class="form-control form-control-solid w-250px ps-14" placeholder="Search Regions" />
+                                class="form-control form-control-solid w-250px ps-14" placeholder="Search Users" />
                         </div>
                         <!--end::Search-->
                     </div>
@@ -41,7 +41,7 @@
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <!--begin::Add user-->
                             @can('user-create')
-                            <a href="{{ route('admin.user.create') }}" class="btn btn- btn-success">
+                            <a href="{{ route('admin.user.create') }}" class="btn btn-success">
                             <i class="fa fa-plus"></i> Add User</a>
                             @endcan
                             <!--end::Add user-->

@@ -63,7 +63,7 @@
             <div class="d-flex justify-content-end overflow-auto pt-3">
             
             <!--begin::Menu wrapper-->
-            <div class="btn btn-icon btn-icon-dark btn-active-primary w-30px h-30px w-md-40px h-md-40px position-relative me-2" data-bs-toggle="tooltip" data-bs-delay-show="1000" data-bs-placement="left" title="New Order" id="kt_drawer_chat_toggle">
+            <div class="btn btn-icon btn-icon-primary btn-active-primary w-30px h-30px w-md-40px h-md-40px position-relative me-2" data-bs-toggle="tooltip" data-bs-delay-show="1000" data-bs-placement="left" title="New Order" id="kt_drawer_chat_toggle">
                 <!--begin::Svg Icon | path: assets/media/icons/duotune/ecommerce/ecm001.svg-->
                 <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path opacity="0.3" d="M18.041 22.041C18.5932 22.041 19.041 21.5932 19.041 21.041C19.041 20.4887 18.5932 20.041 18.041 20.041C17.4887 20.041 17.041 20.4887 17.041 21.041C17.041 21.5932 17.4887 22.041 18.041 22.041Z" fill="black"/>
@@ -76,7 +76,7 @@
             <!--end::Menu wrapper-->
 
             <!--begin::Menu wrapper-->
-            <div class="btn btn-icon btn-icon-dark btn-active-primary w-30px h-30px w-md-40px h-md-40px position-relative" id="kt_drawer_chat_toggle">
+            <div class="btn btn-icon btn-icon-primary btn-active-primary w-30px h-30px w-md-40px h-md-40px position-relative" id="kt_drawer_chat_toggle">
                 <!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen007.svg-->
                 <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path opacity="0.3" d="M12 22C13.6569 22 15 20.6569 15 19C15 17.3431 13.6569 16 12 16C10.3431 16 9 17.3431 9 19C9 20.6569 10.3431 22 12 22Z" fill="black"/>

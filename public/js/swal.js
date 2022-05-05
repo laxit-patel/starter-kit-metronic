@@ -9,3 +9,4 @@ const Toast = Swal.mixin({
         toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
 }); //this is predifined toast for form errors
+

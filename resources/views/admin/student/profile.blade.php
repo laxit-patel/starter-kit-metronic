@@ -1,7 +1,8 @@
-@extends('user.layouts.main',['title' => 'Profile'])
+@extends('admin.layouts.main',['title' => 'Profile'])
 
 @section('breadcrumb')
-<li class="breadcrumb-item pe-3"><a href="{{ route('user.user') }}" class="pe-3"><i class="fa fa-home text-hover-primary"></i></a></li>
+<li class="breadcrumb-item pe-3"><a href="{{ route('admin.admin') }}" class="pe-3"><i class="fa fa-home text-hover-primary"></i></a></li>
+<li class="breadcrumb-item px-3 text-primary">Student</li>
 <li class="breadcrumb-item px-3 text-primary">Profile</li>
 @endsection
 
@@ -45,23 +46,14 @@
                             <div class="d-flex flex-column">
                                 <!--begin::Name-->
                                 <div class="d-flex align-items-center mb-2">
-                                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ auth()->user()->name }}</a>
-                                    <a href="#">
-                                        <!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
-                                        <span class="svg-icon svg-icon-1 svg-icon-primary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                                <path d="M10.0813 3.7242C10.8849 2.16438 13.1151 2.16438 13.9187 3.7242V3.7242C14.4016 4.66147 15.4909 5.1127 16.4951 4.79139V4.79139C18.1663 4.25668 19.7433 5.83365 19.2086 7.50485V7.50485C18.8873 8.50905 19.3385 9.59842 20.2758 10.0813V10.0813C21.8356 10.8849 21.8356 13.1151 20.2758 13.9187V13.9187C19.3385 14.4016 18.8873 15.491 19.2086 16.4951V16.4951C19.7433 18.1663 18.1663 19.7433 16.4951 19.2086V19.2086C15.491 18.8873 14.4016 19.3385 13.9187 20.2758V20.2758C13.1151 21.8356 10.8849 21.8356 10.0813 20.2758V20.2758C9.59842 19.3385 8.50905 18.8873 7.50485 19.2086V19.2086C5.83365 19.7433 4.25668 18.1663 4.79139 16.4951V16.4951C5.1127 15.491 4.66147 14.4016 3.7242 13.9187V13.9187C2.16438 13.1151 2.16438 10.8849 3.7242 10.0813V10.0813C4.66147 9.59842 5.1127 8.50905 4.79139 7.50485V7.50485C4.25668 5.83365 5.83365 4.25668 7.50485 4.79139V4.79139C8.50905 5.1127 9.59842 4.66147 10.0813 3.7242V3.7242Z" fill="#00A3FF"></path>
-                                                <path class="permanent" d="M14.8563 9.1903C15.0606 8.94984 15.3771 8.9385 15.6175 9.14289C15.858 9.34728 15.8229 9.66433 15.6185 9.9048L11.863 14.6558C11.6554 14.9001 11.2876 14.9258 11.048 14.7128L8.47656 12.4271C8.24068 12.2174 8.21944 11.8563 8.42911 11.6204C8.63877 11.3845 8.99996 11.3633 9.23583 11.5729L11.3706 13.4705L14.8563 9.1903Z" fill="white"></path>
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </a>
+                                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ $student->name }}</a>
+                                    <span class="badge ms-3 badge-secondary cursor-pointer" data-bs-toggle="modal" data-bs-target="#kt_modal_update_username" ><i class="fa fa-pen text-active-white"></i></span>      
                                 </div>
                                 <!--end::Name-->
                                 <!--begin::Info-->
-                                <div class="d-flex flex-wrap fw-bold fs-1 pe-2">
+                                <div class="d-flex flex-wrap fw-bold fs-2 pe-2">
                                     
-                                    <a  class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                    <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
                                     <span class="svg-icon svg-icon-primary svg-icon-1 me-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -69,7 +61,9 @@
                                             <path d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z" fill="black"></path>
                                         </svg>
                                     </span>
-                                    <!--end::Svg Icon-->{{ auth()->user()->email }}  </a>
+                                    <!--end::Svg Icon-->{{ $student->email }}  
+                                    <span class="badge ms-3 badge-secondary cursor-pointer" data-bs-toggle="modal" data-bs-target="#kt_modal_update_email" ><i class="fa fa-pen text-active-white"></i></span>      
+                                    </a>
 
                                 </div>
                                 <!--end::Info-->
@@ -80,7 +74,7 @@
                                     <span class="svg-icon svg-icon-4 me-3">
                                         <i class="fa fa-phone"></i>
                                     </span>
-                                    <!--end::Svg Icon-->?Phone 
+                                    <!--end::Svg Icon-->
                                 </a> 
                                     
                                 </div>
@@ -104,6 +98,11 @@
                     <li class="nav-item mt-2">
                         <a class="nav-link text-active-primary ms-0 me-10 py-5" data-bs-toggle="tab" href="#tab_sap">Credentials</a>
                     </li>
+                    <!--end::Nav item-->  
+                    <!--begin::Nav item-->
+                    <li class="nav-item mt-2">
+                        <a class="nav-link text-active-primary ms-0 me-10 py-5" data-bs-toggle="tab" href="#tab_delete"><i class="fa text-danger fa-trash"></i></a>
+                    </li>
                     <!--end::Nav item-->               
                 </ul>
                 <!--begin::Navs-->
@@ -118,28 +117,25 @@
                 <!--begin::Card header-->
                 <div class="card-header">
                     <!--begin::Card title-->
-                    <div class="card-title fs-3 fw-bolder">Project Settings</div>
+                    <div class="card-title fs-3 fw-bolder">Student Profile</div>
                     <!--end::Card title-->
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Toolbar-->
+                        <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                            <button type="submit" form="update_profile" class="btn btn-primary btn-hover-scale" >Update</button>
+                        </div>
+                        <!--end::Toolbar-->
+                    </div>
+                    <!--end::Card toolbar-->
                 </div>
                 <!--end::Card header-->
                 <!--begin::Form-->
-                <form method="POST" action="{{ route('user.profile.update') }}" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                <form method="POST" id="update_profile" action="{{ route('admin.student.update') }}" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
                     @csrf
+                    <input type="hidden" value="{{$student->id}}" name="student">
                     <!--begin::Card body-->
                     <div class="card-body p-9">
-                        <!--begin::Row-->
-                        <div class="row mb-8">
-                            <!--begin::Col-->
-                            <div class="col-xl-3">
-                                <div class="fs-6 fw-bold mt-2 mb-3">Name</div>
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
-                            <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                <input type="text" class="form-control form-control-solid" name="name" value="{{ auth()->user()->name }}" >
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                        </div>
-                        <!--end::Row-->
                         <!--begin::Row-->
                         <div class="row mb-8">
                             <!--begin::Col-->
@@ -149,7 +145,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                <input type="text" class="form-control form-control-solid" name="phone" value="" placeholder="Enter Phone">
+                                <input type="text" class="form-control form-control-solid" name="phone" value="{{ $student->profile->phone }}" placeholder="Enter Phone">
                             <div class="fv-plugins-message-container invalid-feedback"></div></div>
                         </div>
                         <!--end::Row-->
@@ -172,7 +168,7 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <input class="form-control form-control-solid ps-12" name="dob" placeholder="Enter Date of Birth" id="dob" type="date">
+                                    <input class="form-control form-control-solid ps-12" name="dob" placeholder="Enter Date of Birth" id="dob" value="{{ $student->profile->dob }}" type="date">
                                 </div>
                             <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             <!--begin::Col-->
@@ -188,8 +184,8 @@
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row fv-plugins-icon-container">
                                 <select class="form-select form-select-lg form-select-solid form-select-sm" data-control="select2" name="gender" data-hide-search="true">
-                                    <option value="1">Male</option>
-                                    <option value="0">Female</option>
+                                    <option {{ $student->profile->gender == 1 ? 'selected' : '' }} value="1">Male</option>
+                                    <option {{ $student->profile->gender == 0 ? 'selected' : '' }} value="0">Female</option>
                                 </select>
                             <div class="fv-plugins-message-container invalid-feedback"></div></div>
                         </div>
@@ -208,18 +204,20 @@
                                         <select class="form-select form-select-solid form-select-lg" name="country" id="country" data-control="select2" data-placeholder="Choose Country" >
                                             @foreach ($countries as $country)
                                             <option ></option>
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option {{ $student->profile->country == $country->id ? 'selected' : '' }} value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-4">
                                         <select class="form-select form-select-solid form-select-lg" name="state" id="state" data-placeholder="Select State" data-control="select2" >
                                             <option ></option>
+                                            <option selected value="{{ $student->profile->getState->id }}">{{ $student->profile->getState->name }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4">
                                         <select class="form-select form-select-solid form-select-lg" name="city" id="city" data-control="select2"  data-placeholder="Select City">
                                             <option ></option>
+                                            <option selected value="{{ $student->profile->getCity->id }}">{{ $student->profile->getCity->name }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -236,20 +234,14 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                <textarea name="address" class="form-control form-control-solid h-100px"></textarea>
+                                <textarea name="address" class="form-control form-control-solid h-100px">{{ $student->profile->address }}</textarea>
                             <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             <!--begin::Col-->
                         </div>
                         <!--end::Row-->
-
                     </div>
                     <!--end::Card body-->
-                    <!--begin::Card footer-->
-                    <div class="card-footer d-flex justify-content-end py-6 px-9">
-                        <button type="submit" class="btn btn-primary btn-hover-scale" id="kt_project_settings_submit">Save Changes</button>
-                    </div>
-                    <!--end::Card footer-->
-                <input type="hidden"><div></div></form>
+                <div></div></form>
                 <!--end:Form-->
             </div>
 
@@ -276,7 +268,7 @@
                                     <td>Email</td>
                                     <td>{{ auth()->user()->email }}</td>
                                     <td class="text-end">
-                                        <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto" data-bs-toggle="modal" data-bs-target="#kt_modal_update_email">
+                                        <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto" >
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -315,6 +307,50 @@
                 <!--end::Card body-->
             </div>
 
+            <div class="shadow-lg tab-pane fade show card mb-5 mb-xl-10" id="tab_delete" role="tabpanel">
+                <!--begin::Card header-->
+                <div class="card-header cursor-pointer">
+                    <!--begin::Card title-->
+                    <div class="card-title m-0">
+                        <h3 class="fw-bolder m-0">Delete Student</h3>
+                    </div>
+                    <!--end::Card title-->
+                </div>
+                <!--begin::Card header-->
+                <!--begin::Card body-->
+                <div class="card-body p-9">
+                    
+                    <div class="notice d-flex bg-light-danger rounded border-primary border border-dashed rounded-3 p-6">
+                        <!--begin::Wrapper-->
+                        <div class="d-flex flex-stack flex-grow-1">
+                            <!--begin::Content-->
+                            <div class="fw-bold">
+                                <h4 class="text-gray-900 fw-bolder">This is a very important notice!</h4>
+                                <div class="fs-6 text-gray-700">Deleting Dealer can cause System Malfunction, So Think Twice Before You do anything.</div>
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                        <!--end::Wrapper-->
+                    </div>
+    
+                    <div class="row mt-10 ">
+    
+                        <div class="col-md-9">
+                            <div class="form-floating mb-7">
+                                <input type="email" class="form-control" onkeyup="confirmDelete(this)" />
+                                <label for="delete_dealer">Please Type "Confirm Delete"</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{{ route('admin.student.delete',['id' => $student->id]) }}" id="delete_button" class="btn btn-lg btn-danger btn-block w-100 disabled">Delete</a>
+                        </div>
+    
+                    </div>
+
+                </div>
+                <!--end::Card body-->
+            </div>
+
         </div>
         <!--end::details View-->
         <!--begin::Modal - Update email-->
@@ -345,9 +381,9 @@
                     <!--begin::Modal body-->
                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                         <!--begin::Form-->
-                        <form id="kt_modal_update_email_form" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="{{ route('user.profile.update.email') }}">
+                        <form id="kt_modal_update_email_form" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="{{ route('admin.student.update.email') }}">
                             @csrf
-                            <input type="hidden" name="user" value="{{ auth()->user()->id }}">
+                            <input type="hidden" name="user" value="{{ $student->id }}">
                             <!--begin::Notice-->
                             <!--begin::Notice-->
                             <div class="notice d-flex bg-light-primary rounded border-primary border border-dashed mb-9 p-6">
@@ -382,7 +418,7 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input class="form-control form-control-solid" placeholder="" name="email" value="{{ auth()->user()->email }}">
+                                <input class="form-control form-control-solid" placeholder="" name="email" value="{{ $student->email }}">
                                 <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             <!--end::Input group-->
@@ -406,8 +442,9 @@
             <!--end::Modal dialog-->
         </div>
         <!--end::Modal - Update email-->
-        <!--begin::Modal - Update password-->
-        <div class="modal fade" id="kt_modal_update_password" tabindex="-1" style="display: none;" aria-hidden="true">
+
+        <!--begin::Modal - Update email-->
+        <div class="modal fade" id="kt_modal_update_username" tabindex="-1" aria-hidden="true">
             <!--begin::Modal dialog-->
             <div class="modal-dialog modal-dialog-centered mw-650px">
                 <!--begin::Modal content-->
@@ -415,7 +452,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Update Password</h2>
+                        <h2 class="fw-bolder">Update User Name</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -434,56 +471,26 @@
                     <!--begin::Modal body-->
                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                         <!--begin::Form-->
-                        <form method="POST" id="kt_modal_update_password_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="{{ route('user.profile.update.password') }}" _lpchecked="1">
+                        <form id="kt_modal_update_email_form" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="{{ route('admin.student.update.name') }}">
                             @csrf
-                            <!--begin::Input group=-->
-                            <div class="fv-row mb-10 fv-plugins-icon-container">
-                                <label class="required form-label fs-6 mb-2">Current Password</label>
-                                <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="current_password" autocomplete="off">
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                            <!--end::Input group=-->
+                            <input type="hidden" name="user" value="{{ $student->id }}">                            
                             <!--begin::Input group-->
-                            <div class="mb-10 fv-row fv-plugins-icon-container" data-kt-password-meter="true">
-                                <!--begin::Wrapper-->
-                                <div class="mb-1">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-bold fs-6 mb-2">New Password</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input wrapper-->
-                                    <div class="position-relative mb-3">
-                                        <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="new_password" autocomplete="off">
-                                        <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
-                                            <i class="bi bi-eye-slash fs-2"></i>
-                                            <i class="bi bi-eye fs-2 d-none"></i>
-                                        </span>
-                                    </div>
-                                    <!--end::Input wrapper-->
-                                    <!--begin::Meter-->
-                                    <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
-                                    </div>
-                                    <!--end::Meter-->
-                                </div>
-                                <!--end::Wrapper-->
-                                <!--begin::Hint-->
-                                <div class="text-muted">Use 8 or more characters with a mix of letters, numbers &amp; symbols.</div>
-                                <!--end::Hint-->
+                            <div class="fv-row mb-7 fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="fs-6 fw-bold form-label mb-2">
+                                    <span class="required">User Name
+                                </label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input class="form-control form-control-solid" name="name" value="{{ $student->name }}">
+                                <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                            <!--end::Input group=-->
-                            <!--begin::Input group=-->
-                            <div class="fv-row mb-10 fv-plugins-icon-container">
-                                <label class="form-label fw-bold fs-6 mb-2">Confirm New Password</label>
-                                <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm_password" autocomplete="off">
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                            <!--end::Input group=-->
+                            <!--end::Input group-->
                             <!--begin::Actions-->
                             <div class="text-center pt-15">
                                 <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Discard</button>
                                 <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
-                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-label">Update</span>
                                     <span class="indicator-progress">Please wait... 
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                 </button>
@@ -498,7 +505,7 @@
             </div>
             <!--end::Modal dialog-->
         </div>
-        <!--end::Modal - Update password-->
+        <!--end::Modal - Update email-->
     </div>
     <!--end::Container-->
 </div>
@@ -507,55 +514,65 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-    $(document).on('select2:open', () => {
-        document.querySelector('.select2-search__field').focus();
-    }); // focus on search input in select 2
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-search__field').focus();
+        }); // focus on search input in select 2 -------------------------------------------------------------
 
-    $('#country').on("select2:select", function(e) { 
-        var country = this.value;
-        $("#state").html('');
-        $.ajax({
-            url: "{{ route('state.fetch') }}",
-            type: "GET",
-            data: {
-                country_id: country,
-            },
-            dataType: 'json',
-            success: function (result) {
-                $('#state').html('<option value="">Select State</option>');
-                $.each(result.states, function (key, value) {
-                    $("#state").append('<option value="' + value
-                        .id + '">' + value.name + '</option>');
-                });
-                $('#state').select2('open');
+        $('#country').on("select2:select", function (e) {
+            var country = this.value;
+            $("#state").html('');
+            $("#city").html('');
+            $.ajax({
+                url: "{{ route('state.fetch') }}",
+                type: "GET",
+                data: {
+                    country_id: country,
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#state').html('<option value="">Select State</option>');
+                    $.each(result.states, function (key, value) {
+                        $("#state").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    $('#state').select2('open');
+                }
+            });
+        }); //country select listener --------------------------------------------------------------------------
+
+        $('#state').on("select2:select", function (e) {
+            var state = this.value;
+            $("#city").html('');
+            $.ajax({
+                url: "{{ route('city.fetch') }}",
+                type: "GET",
+                data: {
+                    state_id: state,
+                },
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                    $('#city').html('<option value="">Select State</option>');
+                    $.each(result.cities, function (key, value) {
+                        $("#city").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    $('#city').select2('open');
+                }
+            });
+        }); //state select listener -----------------------------------------------------------------------------
+
+    });
+
+    function confirmDelete(e) {
+            let confirmation = e.value;
+            if (confirmation == 'Confirm Delete') {
+                document.getElementById('delete_button').classList.remove('disabled');
+            } else {
+                document.getElementById('delete_button').classList.add('disabled');
             }
-        });
-    }); //country select listener
-
-    $('#state').on("select2:select", function(e) { 
-        var state = this.value;
-        $("#city").html('');
-        $.ajax({
-            url: "{{ route('city.fetch') }}",
-            type: "GET",
-            data: {
-                state_id: state,
-            },
-            dataType: 'json',
-            success: function (result) {
-                console.log(result);
-                $('#city').html('<option value="">Select State</option>');
-                $.each(result.cities, function (key, value) {
-                    $("#city").append('<option value="' + value
-                        .id + '">' + value.name + '</option>');
-                });
-                $('#city').select2('open');
-            }
-        });
-    }); //state select listener
-
-});
+        } // Confirm Delete for dealer -------------------------------------------------------------------------
 </script>
 @endpush
