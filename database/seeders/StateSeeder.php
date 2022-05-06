@@ -14,7 +14,6 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        $this->command->info("Inserting States");
         DB::insert("INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
         (1, 'Andaman and Nicobar Islands', 101),
         (2, 'Andhra Pradesh', 101),
@@ -4107,6 +4106,5 @@ class StateSeeder extends Seeder
         (4118, 'Matabeleland North', 246),
         (4119, 'Matabeleland South', 246),
         (4120, 'Midlands', 246);");
-        $this->command->comment("State Inserted");
     }
 }

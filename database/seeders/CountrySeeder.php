@@ -14,7 +14,6 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        $this->command->info("Inserting Countries");
         DB::insert("INSERT INTO `countries` (`id`, `sortname`, `name`, `phonecode`) VALUES
         (1, 'AF', 'Afghanistan', 93),
         (2, 'AL', 'Albania', 355),
@@ -262,6 +261,5 @@ class CountrySeeder extends Seeder
         (244, 'YU', 'Yugoslavia', 38),
         (245, 'ZM', 'Zambia', 260),
         (246, 'ZW', 'Zimbabwe', 263);");
-        $this->command->comment("Conutries Inserted");
     }
 }

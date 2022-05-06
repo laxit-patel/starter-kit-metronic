@@ -39,4 +39,10 @@ Route::name('student.update.email')->post('/student/update/email', 'App\Http\Con
 Route::name('student.update.name')->post('/student/update/name', 'App\Http\Controllers\Admin\StudentController@updateName')->middleware(['permission:student-update-name']);
 Route::name('student.delete')->get('/student/delete/{id}', 'App\Http\Controllers\Admin\StudentController@delete')->middleware(['permission:student-delete']);
 
+//Course
+Route::name('course')->get('/course', 'App\Http\Controllers\Admin\CourseController@index')->middleware(['permission:course-view']);
+
+//Batch
+Route::name('batch')->get('/batch', 'App\Http\Controllers\Admin\BatchController@index')->middleware(['permission:batch-view']);
+
 ?>

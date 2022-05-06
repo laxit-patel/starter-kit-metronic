@@ -2,7 +2,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item pe-3"><a href="{{ route('admin.admin') }}" class="pe-3"><i class="fa fa-home text-hover-primary"></i></a></li>
-<li class="breadcrumb-item px-3 text-primary">Student</li>
+<li class="breadcrumb-item pe-3"><a class="text-hover-primary text-muted" href="{{ route('admin.student') }}" class="pe-3"> Student</a></li>
 <li class="breadcrumb-item px-3 text-primary">Profile</li>
 @endsection
 

@@ -19,8 +19,6 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $this->command->info("Creating User");
-
         // Create admin
         $superId = Str::uuid()->toString(); // Re-use for role assignment
         DB::table('users')->insert([
@@ -32,12 +30,10 @@ class AdminSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        $this->command->comment("Super Admin Created");
 
         // Assign super-admin Role
         $superAdmin = User::where('id',$superId)->first();
         $superAdmin->assignRole('super-admin');
-        $this->command->comment("Super Admin Role Assigned");
 
         //create sub admin
         $id = Str::uuid()->toString(); // Re-use for role assignment
@@ -50,12 +46,10 @@ class AdminSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        $this->command->comment("Admin Created");
 
         // Assign super-admin Role
         $admin = User::where('id',$id)->first();
         $admin->assignRole('admin');
-        $this->command->comment("Admin Role Assigned");
 
     }
 }

@@ -16,30 +16,24 @@ class PermissionSeeder extends Seeder
     {
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
-        $this->command->info("Role & Permission Cache Purged");
 
-        $this->command->info("Creating Permissions For");
-
-        // Permissions::User
+        // User
         Permission::create(['name' => 'user-view']);
         Permission::create(['name' => 'user-create']);
         Permission::create(['name' => 'user-delete']);
         Permission::create(['name' => 'user-profile']);
         Permission::create(['name' => 'user-update']);
-        $this->command->comment("User");
 
-        // Permissions::Permission
+        // Permission
         Permission::create(['name' => 'permission-view']);
-        $this->command->comment("Permission");
-   
-        // Permissions::Role
+
+        // Role
         Permission::create(['name' => 'role-view']);
         Permission::create(['name' => 'role-create']);
         Permission::create(['name' => 'role-update']);
         Permission::create(['name' => 'role-delete']);
-        $this->command->comment("Role");
 
-        // Permissions::Student
+        // Student
         Permission::create(['name' => 'student-view']);
         Permission::create(['name' => 'student-create']);
         Permission::create(['name' => 'student-profile']);
@@ -47,7 +41,18 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'student-delete']);
         Permission::create(['name' => 'student-update-name']);
         Permission::create(['name' => 'student-update-email']);
-        $this->command->comment("Student");
+
+        // Course
+        Permission::create(['name' => 'course-view']);
+        Permission::create(['name' => 'course-create']);
+        Permission::create(['name' => 'course-update']);
+        Permission::create(['name' => 'course-delete']);
+        
+        // Batch
+        Permission::create(['name' => 'batch-view']);
+        Permission::create(['name' => 'batch-create']);
+        Permission::create(['name' => 'batch-update']);
+        Permission::create(['name' => 'batch-delete']);
 
     }
 }
