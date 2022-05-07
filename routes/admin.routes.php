@@ -46,4 +46,10 @@ Route::name('course.fetch.batch')->get('/course/fetch/batch', 'App\Http\Controll
 //Batch
 Route::name('batch')->get('/batch', 'App\Http\Controllers\Admin\BatchController@index')->middleware(['permission:batch-view']);
 
+//Subject 
+Route::name('subject')->get('/subject', 'App\Http\Controllers\Admin\SubjectController@index')->middleware(['permission:subject-view']);
+
+//Lesson
+Route::name('lesson')->get('/lesson', 'App\Http\Controllers\Admin\LessonController@index')->middleware(['permission:lesson-view']);
+
 ?>

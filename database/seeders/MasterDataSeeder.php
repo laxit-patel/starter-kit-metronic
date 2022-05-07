@@ -16,6 +16,7 @@ class MasterDataSeeder extends Seeder
      */
     public function run()
     {
+
         $course_id = Str::uuid()->toString();
 
         DB::table('courses')->insert(
@@ -59,6 +60,54 @@ class MasterDataSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ]
-        );
+        ); // Inserting Course & Batch
+
+        $subject_id = Str::uuid()->toString();
+
+        DB::table('subjects')->insert(
+            [
+                'id' => $subject_id,
+                'name' => 'Grammar',
+                'description' => 'Corporate Grammar for employees',
+                'course' => $course_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Course & Batch
+
+        DB::table('lessons')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'name' => 'Adjectives',
+                'description' => 'Detailed lesson on basics of grammar',
+                'subject' => $subject_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Course & Batch
+
+        DB::table('lessons')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'name' => 'Phrases',
+                'description' => 'Simple Phrases',
+                'subject' => $subject_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Course & Batch
+
+        DB::table('lessons')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'name' => 'Clause',
+                'description' => 'Simple Clauses',
+                'subject' => $subject_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Course & Batch
+
+
     }
 }

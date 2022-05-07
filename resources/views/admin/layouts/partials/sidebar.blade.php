@@ -139,6 +139,48 @@
                     </div>
                 </div>
 
+                <div data-kt-menu-trigger="click" class="menu-item {{ Route::is('admin.subject*') || Route::is('admin.lesson') ? 'show' : '' }} menu-accordion mb-1">
+                    <span class="menu-link {{ Route::is('admin.subject*') || Route::is('admin.lesson') ? 'active' : '' }}">
+                        <span class="menu-icon">
+                            <i class="fa fa-book-open me-2"></i>
+                        </span>
+                        <span class="menu-title">Subject</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        @can('subject-view')
+                        <div class="menu-item {{ Route::is('admin.subject') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.subject') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Index</span>
+                            </a>
+                        </div>
+                        @endcan
+                        @can('subject-create')
+                        <div class="menu-item {{ Route::is('admin.student.create') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.student.create') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Add Subject</span>
+                            </a>
+                        </div>
+                        @endcan
+                        @can('subject-view')
+                        <div class="menu-item {{ Route::is('admin.lesson') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.lesson') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Lesson</span>
+                            </a>
+                        </div>
+                        @endcan
+                    </div>
+                </div>
+
                 <div class="menu-item">
                     <a class="menu-link " href="">
                         <span class="menu-icon">
