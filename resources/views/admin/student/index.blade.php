@@ -63,6 +63,9 @@
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Batch</th>
+                                <th>Course</th>
+                                <th>Created</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -113,6 +116,15 @@
                 data: 'email'
             },
             {
+                data: 'batch'
+            },
+            {
+                data: 'course'
+            },
+            {
+                data: 'created'
+            },
+            {
                 data: null
             },
         ],
@@ -131,6 +143,14 @@
                 },
             },
             {
+                targets: 2,
+                render: function (data, type, row) {
+                    return `
+                                <span class="badge badge-lg badge-primary">${data}</span>
+                            `;
+                },
+            },
+            {
                 "targets": '_all',
                 "createdCell": function (td, cellData, rowData, row, col) {
                     $(td).css('padding-bottom', '0px')
@@ -145,8 +165,8 @@
         }
     });
 
-    $('#search').keyup(function(){
-        datatable.search($(this).val()).draw() ;
+    $('#search').keyup(function () {
+        datatable.search($(this).val()).draw();
     })
 </script>
 @endpush

@@ -9,16 +9,7 @@
                 <div class="menu-item">
                     <a class="menu-link {{ Route::is('admin.admin') ? 'active' : '' }}" href="{{ route('admin.admin') }}">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
+                            <i class="fa fa-chart-pie me-2"></i>
                         </span>
                         <span class="menu-title">Dashboard</span>
                     </a>
@@ -77,16 +68,7 @@
                 <div data-kt-menu-trigger="click" class="menu-item {{ Route::is('admin.student*') ? 'show' : '' }} menu-accordion mb-1">
                     <span class="menu-link {{ Route::is('admin.student*') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M16.0173 9H15.3945C14.2833 9 13.263 9.61425 12.7431 10.5963L12.154 11.7091C12.0645 11.8781 12.1072 12.0868 12.2559 12.2071L12.6402 12.5183C13.2631 13.0225 13.7556 13.6691 14.0764 14.4035L14.2321 14.7601C14.2957 14.9058 14.4396 15 14.5987 15H18.6747C19.7297 15 20.4057 13.8774 19.912 12.945L18.6686 10.5963C18.1487 9.61425 17.1285 9 16.0173 9Z" fill="currentColor"/>
-                                    <rect opacity="0.3" x="14" y="4" width="4" height="4" rx="2" fill="currentColor"/>
-                                    <path d="M4.65486 14.8559C5.40389 13.1224 7.11161 12 9 12C10.8884 12 12.5961 13.1224 13.3451 14.8559L14.793 18.2067C15.3636 19.5271 14.3955 21 12.9571 21H5.04292C3.60453 21 2.63644 19.5271 3.20698 18.2067L4.65486 14.8559Z" fill="currentColor"/>
-                                    <rect opacity="0.3" x="6" y="5" width="6" height="6" rx="3" fill="currentColor"/>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
+                            <i class="fa fa-user-graduate me-2"></i>
                         </span>
                         <span class="menu-title">Students</span>
                         <span class="menu-arrow"></span>
@@ -118,17 +100,7 @@
                 <div data-kt-menu-trigger="click" class="menu-item {{ Route::is('admin.course*') || Route::is('admin.batch*') ? 'show' : '' }} menu-accordion mb-1">
                     <span class="menu-link {{ Route::is('admin.course*') || Route::is('admin.batch*') ? 'active' : '' }}">
                         <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen051.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M8.7 4.19995L4 6.30005V18.8999L8.7 16.8V19L3.1 21.5C2.6 21.7 2 21.4 2 20.8V6C2 5.4 2.3 4.89995 2.9 4.69995L8.7 2.09998V4.19995Z" fill="currentColor"/>
-                                    <path d="M15.3 19.8L20 17.6999V5.09992L15.3 7.19989V4.99994L20.9 2.49994C21.4 2.29994 22 2.59989 22 3.19989V17.9999C22 18.5999 21.7 19.1 21.1 19.3L15.3 21.8998V19.8Z" fill="currentColor"/>
-                                    <path opacity="0.3" d="M15.3 7.19995L20 5.09998V17.7L15.3 19.8V7.19995Z" fill="currentColor"/>
-                                    <path opacity="0.3" d="M8.70001 4.19995V2L15.4 5V7.19995L8.70001 4.19995ZM8.70001 16.8V19L15.4 22V19.8L8.70001 16.8Z" fill="currentColor"/>
-                                    <path opacity="0.3" d="M8.7 16.8L4 18.8999V6.30005L8.7 4.19995V16.8Z" fill="currentColor"/>
-                                    </svg>
-                            </span>
-                            <!--end::Svg Icon-->
+                            <i class="fa fa-graduation-cap me-2"></i>
                         </span>
                         <span class="menu-title">Course</span>
                         <span class="menu-arrow"></span>

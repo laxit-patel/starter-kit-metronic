@@ -17,7 +17,17 @@ class StudentController extends Controller
     {
         if($request->ajax())
         {
-            $data = User::where('is_admin',0)->get(['id','name','email']);
+            $student = User::where('is_admin',0)->get(['id','name','email','created_at']);
+            $data = $student->map(function ($data){
+                return [
+                    'id' => $data->id,
+                    'name' => $data->name,
+                    'email' => $data->email,
+                    'batch' => $data->profile->getBatch->name,
+                    'course' => $data->profile->getBatch->getCourse->name,
+                    'created' => $data->created_at->diffForHumans(),
+                ];
+            });
             return DataTables::of($data)->toJson();
         }
         return view('admin.student.index');

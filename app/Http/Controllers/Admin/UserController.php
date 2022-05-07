@@ -25,7 +25,6 @@ class UserController extends Controller
                     'created' => $data->created_at->diffForHumans(),
                 ];
             });
-            
             return DataTables::of($data)->toJson();
         }
         return view('admin.user.index');

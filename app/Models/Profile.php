@@ -27,4 +27,9 @@ class Profile extends Model
     {
         return $this->hasOne(City::class,'id','city');
     }
+
+    public function getBatch()
+    {
+        return $this->hasOne(Batch::class, 'id','batch');
+    }
 }
