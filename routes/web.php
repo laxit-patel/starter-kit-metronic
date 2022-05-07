@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CountryStateCityController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -26,16 +25,18 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::group([ 'middleware' => 'is_admin', 'prefix' => 'admin','as' => 'admin.'], function () {
-        include 'admin.routes.php'; // separated admin routes
+        include_once 'admin.routes.php'; // separated admin routes
     });
     Route::group([ 'middleware' => 'is_user', 'prefix' => 'user','as' => 'user.'], function () {
-        include 'user.routes.php'; // separated user routes
+        include_once 'user.routes.php'; // separated user routes
     });
 });
 
-Route::get('state/fetch', [CountryStateCityController::class, 'fetchState'])->name('state.fetch');
-Route::get('city/fetch', [CountryStateCityController::class, 'fetchCity'])->name('city.fetch');
+// Common Routes
+Route::name('state.fetch')->get('/state/fetch', 'App\Http\Controllers\CountryStateCityController@fetchState');
+Route::name('city.fetch')->get('/city/fetch', 'App\Http\Controllers\CountryStateCityController@fetchCity');
 
+// Config Routes
 Route::get('/permission/create', function () {
     $permission = request()->query('name');
     Permission::create(['name' => $permission]);

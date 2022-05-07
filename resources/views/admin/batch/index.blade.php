@@ -130,16 +130,14 @@
                 className: 'text-end',
                 render: function (data, type, row) {
                     return `
+                        <a href="admin/dealer/view/${data.cid}" class="btn btn-sm btn-icon btn-hover-scale btn-active-success me-2"
+                        ><span class="svg-icon svg-icon-1"><i class="fa fa-eye"></i></span></a>
 
-                            <a href="admin/dealer/view/${data.cid}" class="btn btn-sm btn-icon btn-hover-scale btn-active-success me-2"
-                            ><span class="svg-icon svg-icon-1"><i class="fa fa-eye"></i></span></a>
-
-                            <a  class="btn btn-sm btn-icon btn-hover-scale btn-active-danger me-2"
-                            onclick="deleteItem(this)" 
-                            data-route="admin/dealer/delete/${data.cid}"
-                            ><span class="svg-icon svg-icon-1"><i class="fa fa-trash"></i></span></a>
-
-                            `;
+                        <a  class="btn btn-sm btn-icon btn-hover-scale btn-active-danger me-2"
+                        onclick="deleteItem(this)" 
+                        data-route="admin/dealer/delete/${data.cid}"
+                        ><span class="svg-icon svg-icon-1"><i class="fa fa-trash"></i></span></a>
+                        `;
                 },
             },
             {

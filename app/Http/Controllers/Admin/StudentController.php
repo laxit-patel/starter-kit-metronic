@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Country;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
-use App\Models\{User,Profile};
+use App\Models\{Course, User,Profile};
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -33,14 +33,18 @@ class StudentController extends Controller
     public function create(Request $request)
     {
         $countries = Country::all();
-        return view('admin.student.create',compact('countries'));
+        $courses = Course::get(['id','name']);
+        return view('admin.student.create',compact('countries','courses'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'email' => 'required | unique:users',
             'password' => 'required',
+            'course' => 'required',
+            'batch' => 'required'
         ]);
 
         DB::transaction(function() use($request){
@@ -62,6 +66,7 @@ class StudentController extends Controller
             $profile->state = $request->state;
             $profile->city = $request->city;
             $profile->address = $request->address;
+            $profile->batch = $request->batch;
             $profile->save();
         });
         

@@ -41,6 +41,7 @@ Route::name('student.delete')->get('/student/delete/{id}', 'App\Http\Controllers
 
 //Course
 Route::name('course')->get('/course', 'App\Http\Controllers\Admin\CourseController@index')->middleware(['permission:course-view']);
+Route::name('course.fetch.batch')->get('/course/fetch/batch', 'App\Http\Controllers\Admin\CourseController@fetchCourse');
 
 //Batch
 Route::name('batch')->get('/batch', 'App\Http\Controllers\Admin\BatchController@index')->middleware(['permission:batch-view']);

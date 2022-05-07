@@ -26,4 +26,9 @@ class CourseController extends Controller
         }
         return view('admin.course.index');
     }
+
+    public function fetchCourse(Request $request)
+    {
+        return response()->json(Course::find($request->course)->getBatch);
+    }
 }

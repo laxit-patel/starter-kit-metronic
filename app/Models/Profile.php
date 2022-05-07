@@ -11,6 +11,7 @@ class Profile extends Model
 {
     use HasFactory, HasUUID;
     protected $uuidFieldName = 'id';
+    public $incrementing = false;
 
     public function getCountry()
     {

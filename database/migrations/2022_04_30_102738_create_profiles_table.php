@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('user')->nullable();
-            $table->foreign('user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignUuid('user')->constrained('users')->cascadeOnDelete();
             $table->string('phone')->nullable();
             $table->date('dob')->nullable();
             $table->boolean('gender')->nullable()->comment('1 for Male | 0 from Female');
@@ -25,6 +24,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
+            $table->foreignUuid('batch')->nullable()->constrained('batches')->nullOnDelete();
             $table->timestamps();
         });
     }
