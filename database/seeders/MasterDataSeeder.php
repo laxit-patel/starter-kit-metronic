@@ -108,6 +108,150 @@ class MasterDataSeeder extends Seeder
             ]
         ); // Inserting Course & Batch
 
+        $question_type_id = Str::uuid()->toString();
+
+        DB::table('question_types')->insert(
+            [
+                'id' => $question_type_id,
+                'type' => 'fill in the blanks',
+                'instructions' => 'choose the right option that fits in the blank',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Course & Batch
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
+        DB::table('questions')->insert(
+            [
+                'id' => Str::uuid()->toString(),
+                'question' => 'choose the right adjective',
+                'marks' => '5',
+                'type' => $question_type_id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
+
 
     }
 }

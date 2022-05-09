@@ -65,5 +65,17 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'lesson-create']);
         Permission::create(['name' => 'lesson-update']);
         Permission::create(['name' => 'lesson-delete']);
+
+        // Question Types
+        Permission::create(['name' => 'question-type-view']);
+        Permission::create(['name' => 'question-type-create']);
+        Permission::create(['name' => 'question-type-update']);
+        Permission::create(['name' => 'question-type-delete']);
+
+        // Question
+        Permission::create(['name' => 'question-view']);
+        Permission::create(['name' => 'question-create']);
+        Permission::create(['name' => 'question-update']);
+        Permission::create(['name' => 'question-delete']);
     }
 }

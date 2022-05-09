@@ -181,6 +181,48 @@
                     </div>
                 </div>
 
+                <div data-kt-menu-trigger="click" class="menu-item {{ Route::is('admin.question*') ? 'show' : '' }} menu-accordion mb-1">
+                    <span class="menu-link {{ Route::is('admin.question*') ? 'active' : '' }}">
+                        <span class="menu-icon">
+                            <i class="fa fa-clipboard-list me-2"></i>
+                        </span>
+                        <span class="menu-title">Question</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        @can('subject-view')
+                        <div class="menu-item {{ Route::is('admin.question') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.question') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Index</span>
+                            </a>
+                        </div>
+                        @endcan
+                        @can('subject-create')
+                        <div class="menu-item {{ Route::is('admin.student.create') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.student.create') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Add Question</span>
+                            </a>
+                        </div>
+                        @endcan
+                        @can('subject-view')
+                        <div class="menu-item {{ Route::is('admin.question.type') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.question.type') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Types</span>
+                            </a>
+                        </div>
+                        @endcan
+                    </div>
+                </div>
+
                 <div class="menu-item">
                     <a class="menu-link " href="">
                         <span class="menu-icon">
