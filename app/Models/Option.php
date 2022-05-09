@@ -7,18 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuids;
 use BinaryCabin\LaravelUUID\Traits\HasUUID;
 
-class Question extends Model
+class Option extends Model
 {
     use HasFactory, HasUUID, Uuids;
     protected $uuidFieldName = 'id';
 
-    public function getType()
+    public function getQuestion()
     {
-        return $this->hasOne(QuestionType::class,'id','type');
-    }
-
-    public function options()
-    {
-        return $this->hasMany(Option::class,'question','id');
+        return $this->belongsTo(Question::class,'question','id');
     }
 }

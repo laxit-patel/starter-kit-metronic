@@ -19,7 +19,7 @@ class QuestionController extends Controller
                     'id' => $data->id,
                     'question' => $data->question,
                     'marks' => $data->marks,
-                    'type' => $data->type,
+                    'type' => $data->getType->type,
                     'created' => $data->created_at->diffForHumans(),
                 ];
             });
@@ -30,7 +30,19 @@ class QuestionController extends Controller
 
     public  function question()
     {
-        $questions = Question::paginate(5);
+        $questions = Question::all();
+        foreach ($questions as $key => $value) {
+            echo "question loop";
+            foreach($value->options as $option)
+            {
+                echo "option loop";
+                dd($option,$option->getQuestion->getType);
+            }
+            
+        }
+
+        
+        dd('yo');
         return view('admin.question.question',compact('questions'));
     }
 }

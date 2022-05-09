@@ -53,9 +53,12 @@ Route::name('subject')->get('/subject', 'App\Http\Controllers\Admin\SubjectContr
 Route::name('lesson')->get('/lesson', 'App\Http\Controllers\Admin\LessonController@index')->middleware(['permission:lesson-view']);
 
 //Question
-Route::name('question')->get('/question', 'App\Http\Controllers\Admin\QuestionController@question')->middleware(['permission:question-view']);
+Route::name('question')->get('/question', 'App\Http\Controllers\Admin\QuestionController@index')->middleware(['permission:question-view']);
 
 //Question Type
 Route::name('question.type')->get('/question/type', 'App\Http\Controllers\Admin\QuestionTypeController@index')->middleware(['permission:question-type-view']);
+
+//Option
+Route::name('option.fetch')->get('/option/fetch', 'App\Http\Controllers\Admin\OptionController@fetch');
 
 ?>

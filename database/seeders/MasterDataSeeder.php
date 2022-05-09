@@ -120,9 +120,10 @@ class MasterDataSeeder extends Seeder
             ]
         ); // Inserting Course & Batch
 
+        $question_id = Str::uuid()->toString();
         DB::table('questions')->insert(
             [
-                'id' => Str::uuid()->toString(),
+                'id' => $question_id,
                 'question' => 'choose the right adjective',
                 'marks' => '5',
                 'type' => $question_type_id,
@@ -131,127 +132,58 @@ class MasterDataSeeder extends Seeder
             ]
         ); // Inserting Questions
 
-        DB::table('questions')->insert(
+        DB::table('options')->insert(
             [
                 'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
+                'question' => $question_id,
+                'option' => 'she went to market',
+                'letter' => 'A',
+                'explaination' => 'incorect because no noun present',
+                'correct' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         ); // Inserting Questions
 
-        DB::table('questions')->insert(
+        DB::table('options')->insert(
             [
                 'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
+                'question' => $question_id,
+                'option' => 'Boys are playing',
+                'letter' => 'B',
+                'explaination' => 'incorect because no noun present',
+                'correct' => false,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         ); // Inserting Questions
 
-        DB::table('questions')->insert(
+        DB::table('options')->insert(
             [
                 'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
+                'question' => $question_id,
+                'option' => 'today is sunday',
+                'letter' => 'C',
+                'explaination' => 'incorect because no noun present',
+                'correct' => false,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         ); // Inserting Questions
 
-        DB::table('questions')->insert(
+        DB::table('options')->insert(
             [
                 'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
+                'question' => $question_id,
+                'option' => 'what happened riya',
+                'letter' => 'D',
+                'explaination' => 'incorect because no noun present',
+                'correct' => false,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         ); // Inserting Questions
-
-        DB::table('questions')->insert(
-            [
-                'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ); // Inserting Questions
-
-        DB::table('questions')->insert(
-            [
-                'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ); // Inserting Questions
-
-        DB::table('questions')->insert(
-            [
-                'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ); // Inserting Questions
-
-        DB::table('questions')->insert(
-            [
-                'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ); // Inserting Questions
-
-        DB::table('questions')->insert(
-            [
-                'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ); // Inserting Questions
-
-        DB::table('questions')->insert(
-            [
-                'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ); // Inserting Questions
-
-        DB::table('questions')->insert(
-            [
-                'id' => Str::uuid()->toString(),
-                'question' => 'choose the right adjective',
-                'marks' => '5',
-                'type' => $question_type_id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ); // Inserting Questions
-
+        
 
     }
 }

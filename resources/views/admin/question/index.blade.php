@@ -10,9 +10,6 @@
 @endsection
 
 @section('content')
-<!--begin::Post-->
-<div class="post d-flex flex-column-fluid" id="kt_post">
-    <!--begin::Container-->
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
@@ -77,9 +74,39 @@
         <!--end::Container-->
     </div>
     <!--end::Post-->
-    <!--end::Container-->
+    
+<!--begin::Modal - Show Option-->
+<div class="modal fade " id="option_modal" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-75">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <div class="modal-header">
+                <!--begin::Modal title-->
+                <h2 class="fw-bolder">Options</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <button type="button" class="btn btn-light-danger btn-hover-scale me-2" data-bs-dismiss="modal">
+                    <i class="fa fa-times"></i> Close
+                </button>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y" id="option_body">
+                <div class="table-responsive" style="page-break-inside: avoid!important">
+                    <table class="table table-rounded border gs-5" id="option_table"></table>
+                </div>
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
 </div>
-<!--end::Post-->
+<!--end::Modal-->
+
 @endsection
 
 @push('scripts')
@@ -131,7 +158,8 @@
                 render: function (data, type, row) {
                     return `
 
-                            <a href="admin/dealer/view/${data.cid}" class="btn btn-sm btn-icon btn-hover-scale btn-active-success me-2"
+                            <a class="btn btn-icon btn-hover-scale btn-active-success me-2"
+                            onclick="fetch_items('${ data.id }')"
                             ><span class="svg-icon svg-icon-1"><i class="fa fa-eye"></i></span></a>
 
                             <a  class="btn btn-sm btn-icon btn-hover-scale btn-active-danger me-2"
@@ -159,6 +187,61 @@
 
     $('#search').keyup(function(){
         datatable.search($(this).val()).draw() ;
-    })
+    }) // Search datatable --------------------------------------------------------------------------------------------------------------
+
+    var target = document.querySelector("#datatable");
+
+    var blockUI = new KTBlockUI(target, {
+        message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Fetching Options ...</div>',
+    });
+
+    function fetch_items(question)
+    {
+        blockUI.block();
+
+        $.ajax({
+            url: "{{ route('admin.option.fetch') }}",
+            type: "GET",
+            data: {
+                'question':question
+            },
+            success: function(data){
+                
+                $('#option_table').empty(); 
+
+                $.each( data, function( key, value ) {
+
+                    let row = document.createElement('tr');
+
+                    if(value['correct']){
+                        row.classList.add('bg-light-success');
+                    }else{
+                        row.classList.add('bg-light-danger');
+                    }
+
+                    let option = document.createElement('th');
+
+                    option.innerText = value['option'];
+
+                    row.appendChild(option);
+
+                    $('#option_table').append(row);                                                                                                                                          
+                });
+
+                blockUI.release();
+                //show modal
+                $("#option_modal").modal('show');
+            },
+            error : function(request,err)
+            {
+                blockUI.release();
+                Toast.fire({
+                icon: 'error',
+                title: 'Line Item Error',
+                text: "Couldnt Fetch the Line item 😓"
+                }); //display error toast
+            }
+        });
+    }
 </script>
 @endpush
