@@ -128,6 +128,16 @@
                             </a>
                         </div>
                         @endcan
+                        @can('group-view')
+                        <div class="menu-item {{ Route::is('admin.group') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.group') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Group</span>
+                            </a>
+                        </div>
+                        @endcan
                     </div>
                 </div>
 

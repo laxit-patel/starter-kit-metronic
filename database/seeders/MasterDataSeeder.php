@@ -29,10 +29,12 @@ class MasterDataSeeder extends Seeder
             ]
         );
 
+        $batch_id = Str::uuid()->toString();
+
         DB::table('batches')->insert(
             [
-                'id' => Str::uuid()->toString(),
-                'name' => 'A',
+                'id' => $batch_id,
+                'name' => '2022 March',
                 'description' => 'Batch A',
                 'course' => $course_id,
                 'created_at' => now(),
@@ -40,27 +42,27 @@ class MasterDataSeeder extends Seeder
             ]
         );
 
-        DB::table('batches')->insert( 
+        DB::table('groups')->insert(
             [
                 'id' => Str::uuid()->toString(),
-                'name' => 'B',
-                'description' => 'Batch B',
-                'course' => $course_id,
+                'name' => 'A',
+                'description' => 'Group A',
+                'batch' => $batch_id,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         );
 
-        DB::table('batches')->insert(
+        DB::table('groups')->insert(
             [
                 'id' => Str::uuid()->toString(),
-                'name' => 'C',
-                'description' => 'Batch C',
-                'course' => $course_id,
+                'name' => 'B',
+                'description' => 'Group B',
+                'batch' => $batch_id,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
-        ); // Inserting Course & Batch
+        );
 
         $subject_id = Str::uuid()->toString();
 

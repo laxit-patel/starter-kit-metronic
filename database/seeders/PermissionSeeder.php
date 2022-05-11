@@ -54,6 +54,12 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'batch-update']);
         Permission::create(['name' => 'batch-delete']);
 
+        // Batch
+        Permission::create(['name' => 'group-view']);
+        Permission::create(['name' => 'group-create']);
+        Permission::create(['name' => 'group-update']);
+        Permission::create(['name' => 'group-delete']);
+
         // Subject
         Permission::create(['name' => 'subject-view']);
         Permission::create(['name' => 'subject-create']);
