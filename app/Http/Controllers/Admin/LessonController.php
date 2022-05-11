@@ -27,4 +27,10 @@ class LessonController extends Controller
         }
         return view('admin.lesson.index');
     }
+
+    public function fetch(Request $request)
+    {
+        $lessons = Lesson::where('subject',$request->subject)->get(['id','name']);
+        return response()->json($lessons);
+    }
 }

@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuids;
-use BinaryCabin\LaravelUUID\Traits\HasUUID;
+
 
 class Question extends Model
 {

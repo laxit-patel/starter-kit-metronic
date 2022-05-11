@@ -183,7 +183,17 @@ class MasterDataSeeder extends Seeder
                 'updated_at' => now()
             ]
         ); // Inserting Questions
-        
+
+        $test_id =  Str::uuid()->toString();
+        DB::table('tests')->insert(
+            [
+                'id' => $test_id,
+                'name' => 'Adjective test',
+                'duration' => 30,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ); // Inserting Questions
 
     }
 }

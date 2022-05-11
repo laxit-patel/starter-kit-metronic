@@ -77,5 +77,11 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'question-create']);
         Permission::create(['name' => 'question-update']);
         Permission::create(['name' => 'question-delete']);
+
+        // Test
+        Permission::create(['name' => 'test-view']);
+        Permission::create(['name' => 'test-create']);
+        Permission::create(['name' => 'test-update']);
+        Permission::create(['name' => 'test-delete']);
     }
 }

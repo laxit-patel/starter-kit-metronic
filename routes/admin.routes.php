@@ -51,6 +51,7 @@ Route::name('subject')->get('/subject', 'App\Http\Controllers\Admin\SubjectContr
 
 //Lesson
 Route::name('lesson')->get('/lesson', 'App\Http\Controllers\Admin\LessonController@index')->middleware(['permission:lesson-view']);
+Route::name('lesson.fetch')->get('/lesson/fetch', 'App\Http\Controllers\Admin\LessonController@fetch');
 
 //Question
 Route::name('question')->get('/question', 'App\Http\Controllers\Admin\QuestionController@index')->middleware(['permission:question-view']);
@@ -60,5 +61,9 @@ Route::name('question.type')->get('/question/type', 'App\Http\Controllers\Admin\
 
 //Option
 Route::name('option.fetch')->get('/option/fetch', 'App\Http\Controllers\Admin\OptionController@fetch');
+
+//Test
+Route::name('test')->get('/test', 'App\Http\Controllers\Admin\TestController@index')->middleware(['permission:test-view']);
+Route::name('test.create')->get('/test/create', 'App\Http\Controllers\Admin\TestController@create')->middleware(['permission:test-create']);
 
 ?>

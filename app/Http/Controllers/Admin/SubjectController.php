@@ -27,4 +27,10 @@ class SubjectController extends Controller
         }
         return view('admin.subject.index');
     }
+
+    public function fetch(Request $request)
+    {
+        $lessons = Subject::where('course',$request->subject)->get(['id','name']);
+        return response()->json($lessons);
+    }
 }
