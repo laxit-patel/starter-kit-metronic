@@ -48,9 +48,11 @@ Route::name('batch')->get('/batch', 'App\Http\Controllers\Admin\BatchController@
 
 // Group
 Route::name('group')->get('/group', 'App\Http\Controllers\Admin\GroupController@index')->middleware(['permission:group-view']);
+Route::name('group.fetch')->get('/group/fetch', 'App\Http\Controllers\Admin\GroupController@fetch');
 
 //Subject 
 Route::name('subject')->get('/subject', 'App\Http\Controllers\Admin\SubjectController@index')->middleware(['permission:subject-view']);
+Route::name('subject.fetch')->get('/subject/fetch', 'App\Http\Controllers\Admin\SubjectController@fetch');
 
 //Lesson
 Route::name('lesson')->get('/lesson', 'App\Http\Controllers\Admin\LessonController@index')->middleware(['permission:lesson-view']);
@@ -68,5 +70,6 @@ Route::name('option.fetch')->get('/option/fetch', 'App\Http\Controllers\Admin\Op
 //Test
 Route::name('test')->get('/test', 'App\Http\Controllers\Admin\TestController@index')->middleware(['permission:test-view']);
 Route::name('test.create')->get('/test/create', 'App\Http\Controllers\Admin\TestController@create')->middleware(['permission:test-create']);
+Route::name('test.store')->post('/test/store', 'App\Http\Controllers\Admin\TestController@store')->middleware(['permission:test-create']);
 
 ?>

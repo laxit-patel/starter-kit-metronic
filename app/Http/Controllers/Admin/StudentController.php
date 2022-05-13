@@ -23,8 +23,9 @@ class StudentController extends Controller
                     'id' => $data->id,
                     'name' => $data->name,
                     'email' => $data->email,
-                    'batch' => $data->profile->getBatch->name,
-                    'course' => $data->profile->getBatch->getCourse->name,
+                    'group' => $data->profile->getGroup->name,
+                    'batch' => $data->profile->getGroup->getBatch->name,
+                    'course' => $data->profile->getGroup->getBatch->getCourse->name,
                     'created' => $data->created_at->diffForHumans(),
                 ];
             });
@@ -54,7 +55,8 @@ class StudentController extends Controller
             'email' => 'required | unique:users',
             'password' => 'required',
             'course' => 'required',
-            'batch' => 'required'
+            'batch' => 'required',
+            'group' => 'required',
         ]);
 
         DB::transaction(function() use($request){
@@ -76,7 +78,7 @@ class StudentController extends Controller
             $profile->state = $request->state;
             $profile->city = $request->city;
             $profile->address = $request->address;
-            $profile->batch = $request->batch;
+            $profile->group = $request->group;
             $profile->save();
         });
         

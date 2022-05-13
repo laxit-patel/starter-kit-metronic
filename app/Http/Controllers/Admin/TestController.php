@@ -37,4 +37,17 @@ class TestController extends Controller
         return view('admin.test.create',compact('subjects','courses'));
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required', 
+            'course' => 'required',
+            'batch' => 'required',
+            'group' => 'required',
+            'subject' => 'required',
+            'lesson' => 'required'
+        ]);
+        dd($request->all());
+    }
+
 }

@@ -30,7 +30,8 @@ class SubjectController extends Controller
 
     public function fetch(Request $request)
     {
-        $lessons = Subject::where('course',$request->subject)->get(['id','name']);
-        return response()->json($lessons);
+        
+        $subjects = Subject::where('course',$request->course)->get(['id','name']);
+        return response()->json($subjects);
     }
 }

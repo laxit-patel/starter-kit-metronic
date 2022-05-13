@@ -28,8 +28,8 @@ class Profile extends Model
         return $this->hasOne(City::class,'id','city');
     }
 
-    public function getBatch()
+    public function getGroup()
     {
-        return $this->hasOne(Batch::class, 'id','batch');
+        return $this->hasOne(Group::class, 'id','group');
     }
 }

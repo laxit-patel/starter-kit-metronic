@@ -63,6 +63,7 @@
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Group</th>
                                 <th>Batch</th>
                                 <th>Course</th>
                                 <th>Created</th>
@@ -116,6 +117,9 @@
                 data: 'email'
             },
             {
+                data: 'group'
+            },
+            {
                 data: 'batch'
             },
             {
@@ -146,7 +150,7 @@
                 targets: 2,
                 render: function (data, type, row) {
                     return `
-                                <span class="badge badge-lg badge-primary">${data}</span>
+                                <span class="badge badge-primary">${data}</span>
                             `;
                 },
             },

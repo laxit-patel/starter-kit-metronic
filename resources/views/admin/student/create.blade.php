@@ -120,7 +120,7 @@
                             <!--end::Row-->
 
                             <!--begin::Row-->
-                            <div class="row">
+                            <div class="row mb-8">
                                 <!--begin::Col-->
                                 <div class="col-xl-3">
                                     <div class="fs-6 fw-bold mt-2 mb-3 required">Batch</div>
@@ -129,6 +129,22 @@
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
                                     <select class="form-select form-select-lg form-select-solid" name="batch" id="batch" data-control="select2" data-placeholder="Select Batch" data-hide-search="true">
+                                        <option ></option>
+                                    </select>
+                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            </div>
+                            <!--end::Row-->
+
+                            <!--begin::Row-->
+                            <div class="row">
+                                <!--begin::Col-->
+                                <div class="col-xl-3">
+                                    <div class="fs-6 fw-bold mt-2 mb-3 required">Group</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                    <select class="form-select form-select-lg form-select-solid" name="group" id="group" data-control="select2" data-placeholder="Select Group" data-hide-search="true">
                                         <option ></option>
                                     </select>
                                 <div class="fv-plugins-message-container invalid-feedback"></div></div>
@@ -356,7 +372,7 @@
         var blockUI = new KTBlockUI(target, {
             message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Checking...</div>',
         }); // Element to block white fetching AJAX data ----------------------------------------------------------------------
-
+        
         inputEmail.addEventListener("change", function (e) {
             blockUI.block();
             let email = e.target.value;
@@ -429,11 +445,6 @@
             form.submit();
         }); // Handle Button Click Event ----------------------------------------------------------------------------
 
-
-        $(document).on('select2:open', () => {
-            document.querySelector('.select2-search__field').focus();
-        }); // focus on search input in select 2 -------------------------------------------------------------------
-
         $('#country').on("select2:select", function (e) {
             var country = this.value;
             $("#state").html('');
@@ -497,6 +508,30 @@
             });
         }); //state select listener --------------------------------------------------------------------------------------
 
+        $('#batch').on("select2:select", function (e) {
+            var batch = this.value;
+            $("#group").html('');
+            $.ajax({
+                url: "{{ route('admin.group.fetch') }}",
+                type: "GET",
+                data: {
+                    batch: batch,
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#group').html('<option value="">Select Group</option>');
+                    $.each(result, function (key, value) {
+                        $("#group").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    $('#group').select2('open');
+                }
+            });
+        }); //state select listener --------------------------------------------------------------------------------------
+
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-search__field').focus();
+        }); // focus on search input in select 2 -------------------------------------------------------------------
     </script>
 
 @endpush

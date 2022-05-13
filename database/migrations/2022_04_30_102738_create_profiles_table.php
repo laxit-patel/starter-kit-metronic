@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
-            $table->foreignUuid('batch')->nullable()->constrained('batches')->nullOnDelete();
+            $table->foreignUuid('group')->nullable()->constrained('groups')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@
                 
                 @include('layouts.alerts.error')
 
-                <form class="form" method="POST" action="{{ route('admin.user.store') }}" id="user_form">
+                <form class="form" method="POST" action="{{ route('admin.test.store') }}" id="test_form">
                    @csrf
 
                     <!--begin::Card-->
@@ -31,7 +31,7 @@
                         <div class="card-header">
                             <!--begin::Card title-->
                             <div class="card-title">
-                                <h2 class="fw-bolder">Login Credentials</h2>
+                                <h2 class="fw-bolder">Test Details</h2>
                             </div>
                             <!--begin::Card title-->
                         </div>
@@ -39,20 +39,19 @@
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
 
-                            <div class="mt-3">
-                                <label for="exampleFormControlInput1" class="required form-label fs-5 fw-bolder">User Name</label>
-                                <input type="text" class="form-control form-control-solid" name="name" placeholder="User Name" required/>
+                            <!--begin::Row-->
+                            <div class="row">
+                                <!--begin::Col-->
+                                <div class="col-xl-3">
+                                    <div class="fs-6 fw-bold mt-2 mb-3">Name</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                    <input type="text" class="form-control form-control-solid" id="name" name="name" placeholder="Choose Test Name" required>
+                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             </div>
-
-                            <div class="mt-3">
-                                <label for="exampleFormControlInput1" class="required form-label fs-5 fw-bolder">Email</label>
-                                <input type="email" class="form-control form-control-solid" name="email" id="user_email" placeholder="Email" required/>
-                            </div>
-
-                            <div class="mt-3">
-                                <label for="exampleFormControlInput1" class="required form-label fs-5 fw-bolder">Password</label>
-                                <input type="password" class="form-control form-control-solid" name="password" placeholder="Password"/ required>
-                            </div>
+                            <!--end::Row-->
 
                         </div>
                         <!--end::Card body-->
@@ -65,7 +64,7 @@
                         <div class="card-header">
                             <!--begin::Card title-->
                             <div class="card-title">
-                                <h2 class="fw-bolder required">Select Batch</h2>
+                                <h2 class="fw-bolder required">Select Group</h2>
                             </div>
                             <!--begin::Card title-->
                         </div>
@@ -82,7 +81,7 @@
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <select class="form-select form-select-lg form-select-solid" id="course"  name="course" data-control="select2" data-placeholder="Select Course" data-allow-clear="true">
+                                    <select class="form-select form-select-lg form-select-solid" id="course"  name="course" data-control="select2" data-placeholder="Select Course" data-allow-clear="true" required>
                                         <option></option>
                                         @foreach ($courses as $course)
                                             <option value="{{ $course->id }}">{{ $course->name }}</option>
@@ -101,10 +100,26 @@
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <select class="form-select form-select-lg form-select-solid" id="batch" name="batch" data-control="select2" data-placeholder="Select Batch" data-allow-clear="true">
+                                    <select class="form-select form-select-lg form-select-solid" id="batch" name="batch" data-control="select2" data-placeholder="Select Batch" data-allow-clear="true" required>
                                     </select>
                                 <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             </div>
+                            <!--end::Row-->
+
+                            <!--begin::Row-->
+                            <div class="row">
+                                <!--begin::Col-->
+                                <div class="col-xl-3">
+                                    <div class="fs-6 fw-bold mt-2 mb-3 required">Select Group</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                    <select class="form-select form-select-lg form-select-solid" name="group" id="group" data-control="select2" data-placeholder="Select Group" data-hide-search="true" required>
+                                        <option ></option>
+                                    </select>
+                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            </div> 
                             <!--end::Row-->
 
                         </div>
@@ -135,7 +150,7 @@
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <select class="form-select form-select-lg form-select-solid" id="subject"  name="subject" data-control="select2" data-placeholder="Select Subject" data-allow-clear="true">
+                                    <select class="form-select form-select-lg form-select-solid" id="subject"  name="subject" data-control="select2" data-placeholder="Select Subject" data-allow-clear="true" required>
                                         <option></option>
                                         @foreach ($subjects as $subject)
                                             <option value="{{ $subject->id }}">{{ $subject->name }}</option>
@@ -154,7 +169,7 @@
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <select class="form-select form-select-lg form-select-solid" id="lesson" name="lesson" data-control="select2" data-placeholder="Select Subject" data-allow-clear="true">
+                                    <select class="form-select form-select-lg form-select-solid" id="lesson" name="lesson" data-control="select2" multiple="multiple" data-placeholder="Select Subject" data-allow-clear="true" required>
                                     </select>
                                 <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             </div>
@@ -224,9 +239,9 @@
                         <!--end::Seperator-->
                          <!--begin::Actions-->
                          <div class="mb-0">
-                            <button type="submit" data-form="user_form" class="btn btn-primary" id="create_button">
+                            <button type="submit" data-form="test_form" class="btn btn-primary" id="create_button">
                                 <!--begin::Indicator-->
-                                <span class="indicator-label">Create User</span>
+                                <span class="indicator-label">Create Test</span>
                                 <span class="indicator-progress">Please wait...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                 <!--end::Indicator-->
@@ -255,7 +270,9 @@
 
         $('#course').on("select2:select", function (e) {
             var course = this.value;
+
             $("#batch").html('');
+
             $.ajax({
                 url: "{{ route('admin.course.fetch.batch') }}",
                 type: "GET",
@@ -264,7 +281,7 @@
                 },
                 dataType: 'json',
                 success: function (result) {
-                    $('#batch').html('<option value="">Select Batch</option>');
+                    $('#batch').html('<option selected disabled>Select Batch</option>');
                     $.each(result, function (key, value) {
                         $("#batch").append('<option value="' + value
                             .id + '">' + value.name + '</option>');
@@ -272,28 +289,25 @@
                     $('#batch').select2('open');
                 }
             });
-        }); //state select listener --------------------------------------------------------------------------------------
 
-        $('#batch').on("select2:select", function (e) {
-            var batch = this.value;
             $("#subject").html('');
+
             $.ajax({
-                url: "{{ route('admin.lesson.fetch') }}",
+                url: "{{ route('admin.subject.fetch') }}",
                 type: "GET",
                 data: {
-                    batch: batch,
+                    course: course,
                 },
                 dataType: 'json',
                 success: function (result) {
-                    console.log(result);
-                    $('#lesson').html('<option value="">Select Lesson</option>');
+                    $('#subject').html('<option selected disabled>Select Subject</option>');
                     $.each(result, function (key, value) {
-                        $("#lesson").append('<option value="' + value
+                        $("#subject").append('<option value="' + value
                             .id + '">' + value.name + '</option>');
                     });
-                    $('#lesson').select2('open');
                 }
             });
+
         }); //state select listener --------------------------------------------------------------------------------------
 
 
@@ -309,7 +323,7 @@
                 dataType: 'json',
                 success: function (result) {
                     
-                    $('#lesson').html('<option value="">Select Lesson</option>');
+                    $('#lesson').html('<option disabled>Select Lesson</option>');
                     $.each(result, function (key, value) {
                         $("#lesson").append('<option value="' + value
                             .id + '">' + value.name + '</option>');
@@ -319,26 +333,50 @@
             });
         }); //state select listener --------------------------------------------------------------------------------------
         
+        $('#batch').on("select2:select", function (e) {
+            var batch = this.value;
+            $("#group").html('');
+            $.ajax({
+                url: "{{ route('admin.group.fetch') }}",
+                type: "GET",
+                data: {
+                    batch: batch,
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#group').html('<option selected disabled>Select Group</option>');
+                    $.each(result, function (key, value) {
+                        $("#group").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    $('#group').select2('open');
+                }
+            });
+        }); //state select listener --------------------------------------------------------------------------------------
 
         // Handle button click event
         button.addEventListener("click", function() {
-            if(!$("#user_form")[0].checkValidity())
-            {
-                $("#user_form")[0].reportValidity();
 
-                Toast.fire({
-                icon: 'error',
-                title: 'Please Fill Required Fields',
-                text: "Make sure required fields are filled properly before moving on"
-                }); //display error toast
+            form = document.getElementById(this.getAttribute('data-form'));
 
-                return 0;
-            }
+            // if(!form.checkValidity())
+            // {
+            //     form.reportValidity();
+
+            //     Toast.fire({
+            //     icon: 'error',
+            //     title: 'Please Fill Required Fields',
+            //     text: "Make sure required fields are filled properly before moving on"
+            //     }); //display error toast
+
+            //     return 0;
+            // }
+
             // Activate indicator
             button.setAttribute("data-kt-indicator", "on");
             button.setAttribute("disabled", "true");
 
-            form = document.getElementById(this.getAttribute('data-form'));
+            
             form.submit();
         });
     </script>

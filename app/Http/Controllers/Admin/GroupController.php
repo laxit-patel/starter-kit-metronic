@@ -28,4 +28,10 @@ class GroupController extends Controller
         }
         return view('admin.group.index');
     }
+
+    public function fetch(Request $request)
+    {
+        $groups = Group::where('batch',$request->batch)->get(['id','name']);
+        return response()->json($groups);
+    }
 }
