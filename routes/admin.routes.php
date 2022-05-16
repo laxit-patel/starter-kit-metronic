@@ -71,5 +71,6 @@ Route::name('option.fetch')->get('/option/fetch', 'App\Http\Controllers\Admin\Op
 Route::name('test')->get('/test', 'App\Http\Controllers\Admin\TestController@index')->middleware(['permission:test-view']);
 Route::name('test.create')->get('/test/create', 'App\Http\Controllers\Admin\TestController@create')->middleware(['permission:test-create']);
 Route::name('test.store')->post('/test/store', 'App\Http\Controllers\Admin\TestController@store')->middleware(['permission:test-create']);
+Route::name('test.view')->get('/test/view/{id}', 'App\Http\Controllers\Admin\TestController@view')->middleware(['permission:test-update']);
 
 ?>

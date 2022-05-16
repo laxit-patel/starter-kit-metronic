@@ -16,7 +16,11 @@ return new class extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->text('description')->nullable();
+            $table->foreignUuid('course')->constrained('courses')->cascadeOnDelete();
+            $table->foreignUuid('subject')->constrained('subjects')->cascadeOnDelete();
             $table->integer('duration')->comment('stores minutes till which the test is open');
+            $table->string('status')->default('generated')->comment('generated | live | halt');
             $table->timestamps();
         });
     }

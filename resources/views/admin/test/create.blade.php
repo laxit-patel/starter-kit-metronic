@@ -40,15 +40,43 @@
                         <div class="card-body pt-0">
 
                             <!--begin::Row-->
-                            <div class="row">
+                            <div class="row mb-8">
                                 <!--begin::Col-->
                                 <div class="col-xl-3">
-                                    <div class="fs-6 fw-bold mt-2 mb-3">Name</div>
+                                    <div class="fs-6 fw-bold mt-2 mb-3 required">Name</div>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
                                     <input type="text" class="form-control form-control-solid" id="name" name="name" placeholder="Choose Test Name" required>
+                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            </div>
+                            <!--end::Row-->
+
+                            <!--begin::Row-->
+                            <div class="row mb-8">
+                                <!--begin::Col-->
+                                <div class="col-xl-3">
+                                    <div class="fs-6 fw-bold mt-2 mb-3 required">Duration( in Minutes )</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                    <input type="number" class="form-control form-control-solid" id="duration" name="duration" placeholder="Test Duration in Minutes" required>
+                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            </div>
+                            <!--end::Row-->
+
+                            <!--begin::Row-->
+                            <div class="row">
+                                <!--begin::Col-->
+                                <div class="col-xl-3">
+                                    <div class="fs-6 fw-bold mt-2 mb-3">Description</div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                    <textarea name="description" class="form-control form-control-solid" id="description" name="description" rows="3"></textarea>
                                 <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             </div>
                             <!--end::Row-->
@@ -64,7 +92,7 @@
                         <div class="card-header">
                             <!--begin::Card title-->
                             <div class="card-title">
-                                <h2 class="fw-bolder required">Select Group</h2>
+                                <h2 class="fw-bolder required">Select Course</h2>
                             </div>
                             <!--begin::Card title-->
                         </div>
@@ -73,7 +101,7 @@
                         <div class="card-body pt-0">
 
                             <!--begin::Row-->
-                            <div class="row mb-8">
+                            <div class="row">
                                 <!--begin::Col-->
                                 <div class="col-xl-3">
                                     <div class="fs-6 fw-bold mt-2 mb-3">Select Course</div>
@@ -89,37 +117,6 @@
                                     </select>
                                 <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             </div>
-                            <!--end::Row-->
-
-                            <!--begin::Row-->
-                            <div class="row mb-8">
-                                <!--begin::Col-->
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-bold mt-2 mb-3">Select Batch</div>
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <select class="form-select form-select-lg form-select-solid" id="batch" name="batch" data-control="select2" data-placeholder="Select Batch" data-allow-clear="true" required>
-                                    </select>
-                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                            </div>
-                            <!--end::Row-->
-
-                            <!--begin::Row-->
-                            <div class="row">
-                                <!--begin::Col-->
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-bold mt-2 mb-3 required">Select Group</div>
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <select class="form-select form-select-lg form-select-solid" name="group" id="group" data-control="select2" data-placeholder="Select Group" data-hide-search="true" required>
-                                        <option ></option>
-                                    </select>
-                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                            </div> 
                             <!--end::Row-->
 
                         </div>
@@ -152,9 +149,6 @@
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
                                     <select class="form-select form-select-lg form-select-solid" id="subject"  name="subject" data-control="select2" data-placeholder="Select Subject" data-allow-clear="true" required>
                                         <option></option>
-                                        @foreach ($subjects as $subject)
-                                            <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                        @endforeach
                                     </select>
                                 <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             </div>
@@ -169,7 +163,7 @@
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-xl-9 fv-row fv-plugins-icon-container">
-                                    <select class="form-select form-select-lg form-select-solid" id="lesson" name="lesson" data-control="select2" multiple="multiple" data-placeholder="Select Subject" data-allow-clear="true" required>
+                                    <select class="form-select form-select-lg form-select-solid" id="lesson" name="lesson[]" data-control="select2" multiple="multiple" data-placeholder="Select Subject" data-allow-clear="true" required>
                                     </select>
                                 <div class="fv-plugins-message-container invalid-feedback"></div></div>
                             </div>
@@ -271,25 +265,6 @@
         $('#course').on("select2:select", function (e) {
             var course = this.value;
 
-            $("#batch").html('');
-
-            $.ajax({
-                url: "{{ route('admin.course.fetch.batch') }}",
-                type: "GET",
-                data: {
-                    course: course,
-                },
-                dataType: 'json',
-                success: function (result) {
-                    $('#batch').html('<option selected disabled>Select Batch</option>');
-                    $.each(result, function (key, value) {
-                        $("#batch").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
-                    });
-                    $('#batch').select2('open');
-                }
-            });
-
             $("#subject").html('');
 
             $.ajax({
@@ -305,11 +280,11 @@
                         $("#subject").append('<option value="' + value
                             .id + '">' + value.name + '</option>');
                     });
+                    $('#subject').select2('open');
                 }
             });
 
         }); //state select listener --------------------------------------------------------------------------------------
-
 
         $('#subject').on("select2:select", function (e) {
             var subject = this.value;
@@ -329,27 +304,6 @@
                             .id + '">' + value.name + '</option>');
                     });
                     $('#lesson').select2('open');
-                }
-            });
-        }); //state select listener --------------------------------------------------------------------------------------
-        
-        $('#batch').on("select2:select", function (e) {
-            var batch = this.value;
-            $("#group").html('');
-            $.ajax({
-                url: "{{ route('admin.group.fetch') }}",
-                type: "GET",
-                data: {
-                    batch: batch,
-                },
-                dataType: 'json',
-                success: function (result) {
-                    $('#group').html('<option selected disabled>Select Group</option>');
-                    $.each(result, function (key, value) {
-                        $("#group").append('<option value="' + value
-                            .id + '">' + value.name + '</option>');
-                    });
-                    $('#group').select2('open');
                 }
             });
         }); //state select listener --------------------------------------------------------------------------------------

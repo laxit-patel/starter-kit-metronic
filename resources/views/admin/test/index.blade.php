@@ -17,7 +17,8 @@
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
-            @include('layouts.alerts.error')
+            @include('layouts.alerts.alert')
+            
 
             <!--begin::Card-->
             <div class="card card-stretch shadow-lg card-scroll">
@@ -39,9 +40,8 @@
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <!--begin::Add user-->
-                            <a type="button" class="btn btn- btn-success" data-bs-toggle="modal"
-                                data-bs-target="#region_modal">
-                                <i class="fa fa-plus"></i> Add User</a>
+                            <a href="{{ route('admin.test.create') }}" type="button" class="btn btn-hover-scale btn-success">
+                                <i class="fa fa-plus"></i> Create Test</a>
                             <!--end::Add user-->
                         </div>
                         <!--end::Toolbar-->
@@ -125,15 +125,8 @@
                 className: 'text-end',
                 render: function (data, type, row) {
                     return `
-
-                            <a href="admin/dealer/view/${data.cid}" class="btn btn-sm btn-icon btn-hover-scale btn-active-success me-2"
+                            <a href="test/view/${data.id}" class="btn btn-sm btn-icon btn-hover-scale btn-active-success me-2"
                             ><span class="svg-icon svg-icon-1"><i class="fa fa-eye"></i></span></a>
-
-                            <a  class="btn btn-sm btn-icon btn-hover-scale btn-active-danger me-2"
-                            onclick="deleteItem(this)" 
-                            data-route="admin/dealer/delete/${data.cid}"
-                            ><span class="svg-icon svg-icon-1"><i class="fa fa-trash"></i></span></a>
-
                             `;
                 },
             },

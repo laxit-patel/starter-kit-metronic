@@ -191,6 +191,9 @@ class MasterDataSeeder extends Seeder
             [
                 'id' => $test_id,
                 'name' => 'Adjective test',
+                'description' => 'test for adjectives & verbs',
+                'course' => $course_id,
+                'subject' => $subject_id,
                 'duration' => 30,
                 'created_at' => now(),
                 'updated_at' => now()

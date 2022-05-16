@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\Test;
 use App\Models\Course;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
@@ -31,23 +33,50 @@ class TestController extends Controller
 
     public function create()
     {
-        $subjects = Subject::all();
         $courses = Course::all();
         
-        return view('admin.test.create',compact('subjects','courses'));
+        return view('admin.test.create',compact('courses'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required', 
+            'duration' => 'numeric', 
             'course' => 'required',
-            'batch' => 'required',
-            'group' => 'required',
             'subject' => 'required',
             'lesson' => 'required'
         ]);
-        dd($request->all());
+
+        DB::transaction(function() use($request){
+            
+            $test_id = Str::uuid()->toString();
+
+            Test::create([
+               'id' => $test_id,
+               'name' => $request->name,
+               'description' => $request->description,
+               'course' => $request->course,
+               'subject' => $request->subject,
+               'duration' => $request->duration,
+               'status' => 'generated' 
+            ]);
+
+            foreach ($request->lesson as $lesson) {
+                DB::table('lesson_test')->insert([
+                    'lesson_id' => $lesson,
+                    'test_id' => $test_id
+                ]);
+            }
+
+        });
+        return redirect()->route('admin.test')->with('success','Test Created');
+    }
+
+    public function view($id)
+    {
+        $test = Test::where('id',$id)->get()->first();
+        return view('admin.test.view', compact('test'));
     }
 
 }
