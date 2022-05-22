@@ -202,6 +202,16 @@
                             </a>
                         </div>
                         @endcan
+                        @can('question-type-view')
+                        <div class="menu-item {{ Route::is('admin.question.type') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.question.type') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Types</span>
+                            </a>
+                        </div>
+                        @endcan
                         @can('question-create')
                         <div class="menu-item {{ Route::is('admin.student.create') ? 'show' : '' }}">
                             <a class="menu-link" href="{{ route('admin.student.create') }}">
@@ -212,13 +222,13 @@
                             </a>
                         </div>
                         @endcan
-                        @can('question-type-view')
-                        <div class="menu-item {{ Route::is('admin.question.type') ? 'show' : '' }}">
-                            <a class="menu-link" href="{{ route('admin.question.type') }}">
+                        @can('question-assign')
+                        <div class="menu-item {{ Route::is('admin.question.assign') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.question.assign') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Types</span>
+                                <span class="menu-title">Assign</span>
                             </a>
                         </div>
                         @endcan

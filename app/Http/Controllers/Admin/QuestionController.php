@@ -28,7 +28,7 @@ class QuestionController extends Controller
         return view('admin.question.index');
     }
 
-    public  function question()
+    public function question()
     {
         $questions = Question::all();
         foreach ($questions as $key => $value) {
@@ -44,5 +44,16 @@ class QuestionController extends Controller
         
         dd('yo');
         return view('admin.question.question',compact('questions'));
+    }
+
+    public function assign(Request $request)
+    {
+        return view('admin.question.assign');
+    }
+
+    public function fetch(Request $request)
+    {
+        $questions = Question::with('options')->get();
+        return json_encode($questions);
     }
 }

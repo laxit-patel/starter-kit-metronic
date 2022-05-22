@@ -70,6 +70,7 @@
 		<!--end::Global Javascript Bundle-->
 		@stack('scripts')
 		<!--end::Javascript-->
+		
 	</body>
 	<!--end::Body-->
 </html>

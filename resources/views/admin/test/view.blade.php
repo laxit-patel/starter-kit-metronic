@@ -91,7 +91,7 @@
                         </div>
                         <!--end::Card title-->
                         <div class="card-toolbar">
-                            <a href="#" class="btn btn-sm btn-success btn-hover-scale"> <i class="fa fa-plus-circle"></i> Add</a>
+                            <a href="#" class="btn btn-sm btn-success btn-hover-scale" onclick="fetchQuestion('{{ $test->id }}')" > <i class="fa fa-plus-circle"></i> Add</a>
                         </div>
                     </div>
                     <!--begin::Card header-->
@@ -249,4 +249,48 @@
 </div>
 <!--end::Post-->
 
+@include('admin.test.modal.question')
 @endsection
+
+@push('scripts')
+<script src="{{ asset('js/swal.js') }}"></script>
+<script>
+    var target = document.querySelector("#kt_content");
+
+    var blockUI = new KTBlockUI(target, {
+        message: '<div class="blockui-message"><span class="spinner-border text-primary"></span> Fetching Line Items ...</div>',
+    });
+
+    function fetchQuestion(test){
+        blockUI.block();
+
+        $.ajax({
+            url: "{{ route('admin.question.fetch') }}",
+            type: "GET",
+            data: {
+                'test':test
+            },
+            success: function(data){
+                blockUI.release();
+
+                let questions = JSON.parse(data);
+
+                questions.forEach(function(index,value){
+                    console.log(index);
+                    //TODO add ajax question addingfacility, it wasnt added before because too much work
+                });
+
+            },
+            error : function(request,err)
+            {
+                blockUI.release();
+                Toast.fire({
+                icon: 'error',
+                title: 'Line Item Error',
+                text: "Couldnt Fetch the Line item 😓"
+                }); //display error toast
+            }
+        });
+    }
+</script>
+@endpush
