@@ -34,7 +34,6 @@ class TestController extends Controller
     public function create()
     {
         $courses = Course::all();
-        
         return view('admin.test.create',compact('courses'));
     }
 

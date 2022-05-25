@@ -213,8 +213,8 @@
                         </div>
                         @endcan
                         @can('question-create')
-                        <div class="menu-item {{ Route::is('admin.student.create') ? 'show' : '' }}">
-                            <a class="menu-link" href="{{ route('admin.student.create') }}">
+                        <div class="menu-item {{ Route::is('admin.question.create') ? 'show' : '' }}">
+                            <a class="menu-link" href="{{ route('admin.question.create') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

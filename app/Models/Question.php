@@ -13,6 +13,8 @@ class Question extends Model
     use HasFactory, HasUUID, Uuids;
     protected $uuidFieldName = 'id';
 
+    protected $guarded = [];
+
     public function getType()
     {
         return $this->hasOne(QuestionType::class,'id','type');
@@ -20,6 +22,6 @@ class Question extends Model
 
     public function options()
     {
-        return $this->hasMany(Option::class,'question','id');
+        return $this->hasMany(Option::class,'question','id')->orderBy('letter');
     }
 }

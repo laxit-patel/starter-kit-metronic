@@ -91,7 +91,8 @@
                         </div>
                         <!--end::Card title-->
                         <div class="card-toolbar">
-                            <a href="#" class="btn btn-sm btn-success btn-hover-scale" onclick="fetchQuestion('{{ $test->id }}')" > <i class="fa fa-plus-circle"></i> Add</a>
+                            <a href="#" class="btn btn-sm btn-success btn-hover-scale me-4" onclick="fetchQuestion('{{ $test->id }}')" > <i class="fa fa-plus-circle"></i> Add</a>
+                            <a href="{{ route('admin.question.assign') }}" class="btn btn-sm btn-primary btn-hover-scale" > <i class="fa fa-plus-circle"></i> Add</a>
                         </div>
                     </div>
                     <!--begin::Card header-->

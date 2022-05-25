@@ -130,7 +130,7 @@
                         <div class="card-header">
                             <!--begin::Card title-->
                             <div class="card-title">
-                                <h2 class="fw-bolder required">Select Lesson</h2>
+                                <h2 class="fw-bolder required">Select Lesson</h2><span class="text-muted">( Multiple is allowed )</span>
                             </div>
                             <!--begin::Card title-->
                         </div>
@@ -158,7 +158,7 @@
                             <div class="row mb-8">
                                 <!--begin::Col-->
                                 <div class="col-xl-3">
-                                    <div class="fs-6 fw-bold mt-2 mb-3">Select Lesson</div>
+                                    <div class="fs-6 fw-bold mt-2 mb-3">Select Lessons</div>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->

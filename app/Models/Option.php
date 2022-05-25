@@ -12,6 +12,8 @@ class Option extends Model
     use HasFactory, HasUUID, Uuids;
     protected $uuidFieldName = 'id';
 
+    protected $guarded = [];
+
     public function getQuestion()
     {
         return $this->belongsTo(Question::class,'question','id');

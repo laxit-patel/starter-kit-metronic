@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('question');
             $table->integer('marks');
             $table->foreignUuid('type')->constrained('question_types')->cascadeOnDelete();
+            $table->foreignUuid('lesson')->constrained('lessons')->cascadeOnDelete();
             $table->timestamps();
         });
     }

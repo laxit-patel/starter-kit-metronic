@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->foreignUuid('question')->constrained('questions')->cascadeOnDelete();
             $table->char('letter',1);
             $table->string('option');
-            $table->string('explaination');
+            $table->string('explaination')->nullable();
             $table->boolean('correct');
             $table->timestamps();
         });
