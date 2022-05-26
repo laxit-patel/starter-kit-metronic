@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div id="kt_content_container" class="container-xxl">
+<div id="kt_content_container" class="container-fluid">
 	<!--begin::Row-->
 	<div class="row g-5 g-xl-8">
 		<div class="col-xl-4">

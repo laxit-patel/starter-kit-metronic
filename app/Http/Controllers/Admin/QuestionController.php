@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Models\Option;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -91,10 +92,38 @@ class QuestionController extends Controller
         return view('admin.question.assign',compact('questions'));
     }
 
+    public function assignToTest(Request $request)
+    {
+
+        $request->validate([
+            'question' => 'required',
+            'test' => 'required'
+        ]);
+
+        DB::table('question_test')->insert([
+            'question_id' => $request->question,
+            'test_id' => $request->test
+        ]);
+
+        return redirect()->route('admin.question.assign')->with('success','Question Assigned');
+    }
+
     public function fetch(Request $request)
     {
         $questions = Question::with('options')->get();
         return json_encode($questions);
+    }
+
+    public function fetchTest(Request $request)
+    {
+        $tests = DB::select("SELECT 
+        tests.name, tests.id
+        from lesson_test as lt
+        join tests on tests.id = lt.test_id
+        join lessons on lessons.id = lt.lesson_id
+        where lessons.id = '{$request->lesson}'
+        ;");
+        return json_encode($tests);
     }
 
     public function processOptions($options)

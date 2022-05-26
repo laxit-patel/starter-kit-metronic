@@ -61,7 +61,9 @@ Route::name('lesson.fetch')->get('/lesson/fetch', 'App\Http\Controllers\Admin\Le
 //Question
 Route::name('question')->get('/question', 'App\Http\Controllers\Admin\QuestionController@index')->middleware(['permission:question-view']);
 Route::name('question.fetch')->get('/question/fetch', 'App\Http\Controllers\Admin\QuestionController@fetch');
+Route::name('question.fetch.test')->get('/question/fetch/test', 'App\Http\Controllers\Admin\QuestionController@fetchTest');
 Route::name('question.assign')->get('/question/assign', 'App\Http\Controllers\Admin\QuestionController@assign')->middleware(['permission:question-assign']);
+Route::name('question.assign.to.test')->post('/question/assign/to/test', 'App\Http\Controllers\Admin\QuestionController@assignToTest')->middleware(['permission:question-assign']);
 Route::name('question.create')->get('/question/create', 'App\Http\Controllers\Admin\QuestionController@create')->middleware(['permission:question-create']);
 Route::name('question.store')->post('/question/store', 'App\Http\Controllers\Admin\QuestionController@store')->middleware(['permission:question-create']);
 

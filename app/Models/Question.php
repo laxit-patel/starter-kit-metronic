@@ -20,6 +20,11 @@ class Question extends Model
         return $this->hasOne(QuestionType::class,'id','type');
     }
 
+    public function getLesson()
+    {
+        return $this->hasOne(Lesson::class,'id','lesson');
+    }
+
     public function options()
     {
         return $this->hasMany(Option::class,'question','id')->orderBy('letter');

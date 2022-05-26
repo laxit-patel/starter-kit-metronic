@@ -11,7 +11,7 @@
 <!--begin::Post-->
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <!--begin::Container-->
-    <div id="kt_content_container" class="container-xxl">
+    <div id="kt_content_container" class="container-fluid">
         <!--begin::Navbar-->
         <div class="card shadow-lg mb-6 mb-xl-9">
             <div class="card-body pt-9 pb-0">
@@ -98,54 +98,82 @@
                     <!--begin::Card header-->
                     <!--begin::Card body-->
                     <div class="card-body p-9">
+
+                        <!--begin::Accordion-->
+                        <div class="accordion  shadow-lg rounded" id='question_accordian'>
+
+                            @forelse ($test->getQuestions as $index => $question)
+                                <div class="accordion-item rounded">
+                                    <h2 class="accordion-header" id="qhead_{{$index}}">
+                                        <button class="accordion-button fs-4 fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qbody_{{$index}}" aria-expanded="{{$index == 0 ? true : false }}" aria-controls="qbody_{{$index}}">
+                                            <div class=" badge badge-lg badge-primary fw-bolder me-5">{{ $index }}</div>
+                                            {{ $question->question }}
+                                        </button>
+                                    </h2>
+                                    <div id="qbody_{{$index}}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}" aria-labelledby="qhead_{{$index}}" data-bs-parent="#question_accordian">
+                                        <div class="accordion-body pb-0">
+                                        
+                                            @foreach ($question->options as $initial => $option)
+                                            <!--begin:Option-->
+                                            <label class="d-flex flex-stack mb-5 cursor-pointer">
+                                                <!--begin:Label-->
+                                                <span class="d-flex align-items-center me-2">
+                                                    <!--begin:Icon-->
+                                                    <div class="symbol symbol-50px me-5">
+                                                        <div class="symbol-label fs-2 fw-bold {{ $option->correct ? 'bg-success text-white' : '' }} ">{{ $option->letter }}</div>
+                                                    </div>
+                                                    <!--end:Icon-->
                         
-                        @forelse ($test->getQuestions as $key => $question)
-                        <div class="separator separator-dashed"></div>
-                        <div class="py-0 mt-5" data-kt-customer-payment-method="row">
-                            <!--begin::Header-->
-                            <div class="py-3 d-flex flex-stack flex-wrap">
-                                <!--begin::Toggle-->
-                                <div class="d-flex align-items-center collapsible rotate" data-bs-toggle="collapse" href="#{{ "dc".$key }}" role="button" aria-expanded="false" aria-controls="{{ "dc".$key }}">
-                                    <!--begin::Arrow-->
-                                    <div class="me-3 rotate-90">
-                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
-                                        <span class="svg-icon svg-icon-3">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                <path d="M12.6343 12.5657L8.45001 16.75C8.0358 17.1642 8.0358 17.8358 8.45001 18.25C8.86423 18.6642 9.5358 18.6642 9.95001 18.25L15.4929 12.7071C15.8834 12.3166 15.8834 11.6834 15.4929 11.2929L9.95001 5.75C9.5358 5.33579 8.86423 5.33579 8.45001 5.75C8.0358 6.16421 8.0358 6.83579 8.45001 7.25L12.6343 11.4343C12.9467 11.7467 12.9467 12.2533 12.6343 12.5657Z" fill="black"></path>
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </div>
-                                    <!--end::Arrow-->
-                                    <!--begin::Summary-->
-                                    <div class="me-3">
-                                        <div class="d-flex align-items-center">
-                                            <div class=" badge badge-lg badge-primary fw-bolder me-5">{{ $DC->distribution_channel }}</div>
-                                            <td class="text-muted ">{{ $DC->distribution_channel_desc }}</td>
+                                                    <!--begin:Info-->
+                                                    <span class="d-flex flex-column">
+                                                        <span class="fw-bolder fs-6">{{ $option->option }}</span>
+                                                        <span class="fs-7 text-muted">{{ $option->explaination }}</span>
+                                                    </span>
+                                                    <!--end:Info-->
+                                                </span>
+                                                <!--end:Label-->
+                        
+                                                <!--begin:Input-->
+                                                <span class="form-check form-check-custom form-check-solid">
+                                                    <input class="form-check-input" type="radio" {{ $option->correct ? 'checked' : '' }}  disabled   />
+                                                </span>
+                                                <!--end:Input-->
+                                            </label>
+                                            <!--end::Option-->
+                                            @endforeach
+
                                         </div>
+
+                                        
+                                        <div class="row bg-light-dark m-0 p-3">
+
+                                            <div class="col-md-12">
+                                                <span class="badge badge-primary badge-lg me-3">Created : {{ $question->created_at->diffForHumans() }}</span>
+                                                <span class="badge badge-primary badge-lg me-3">Type : {{ $question->getType->type }}</span>
+                                                <span class="badge badge-primary badge-lg me-3">Lesson : {{ $question->getLesson->name }}</span>
+                                                <a 
+                                                class="badge cursor-pointer float-end badge-danger badge-lg" 
+                                                data-question="{{ $question->id }}"
+                                                data-lesson="{{ $question->getLesson->id }}"
+                                                onclick="assign(this)"
+                                                >Remove</a>
+                                            </div>
+
+                                        </div>
+                                        
                                     </div>
-                                    <!--end::Summary-->
                                 </div>
-                                <!--end::Toggle-->
-
+                            @empty
+                            <div class="text-center p-lg-10">
+                                <h5 class="text-muted">
+                                    Nothing Here but a cat 
+                                    <i class="fa fa-cat fs-2x text-dark"></i>
+                                </h5>
                             </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div id="{{ "dc".$key }}" class="collapse @if($key == 0 )show @endif fs-6 ps-10" data-bs-parent="#kt_customer_view_payment_method">
+                            @endforelse
 
-                            </div>
-                            <!--end::Body-->
                         </div>
-
-                        <!--end::Option-->
-                        @empty
-                        <div class="text-center ">
-                            <h5 class="text-muted">
-                                Nothing Here but a cat 
-                                <i class="fa fa-cat fs-2x text-dark"></i>
-                            </h5>
-                        </div>
-                        @endforelse
+                        <!--end::Accordion-->
                 
                     </div>
                     <!--end::Card body-->

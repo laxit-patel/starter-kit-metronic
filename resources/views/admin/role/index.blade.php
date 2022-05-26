@@ -9,7 +9,7 @@
 <!--begin::Post-->
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <!--begin::Container-->
-    <div id="kt_content_container" class="container-xxl">
+    <div id="kt_content_container" class="container-fluid">
         @include('layouts.alerts.alert')
         <!--begin::Row-->
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5 g-xl-9">

@@ -13,7 +13,7 @@
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
-        <div id="kt_content_container" class="container-xxl">
+        <div id="kt_content_container" class="container-fluid">
             @include('layouts.alerts.error')
 
             <!--begin::Card-->
@@ -36,9 +36,8 @@
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <!--begin::Add user-->
-                            <a type="button" class="btn btn- btn-success" data-bs-toggle="modal"
-                                data-bs-target="#region_modal">
-                                <i class="fa fa-plus"></i> Add Course</a>
+                            <a href="{{ route('admin.question.create') }}" class="btn btn- btn-success">
+                                <i class="fa fa-plus"></i> Add Question</a>
                             <!--end::Add user-->
                         </div>
                         <!--end::Toolbar-->
